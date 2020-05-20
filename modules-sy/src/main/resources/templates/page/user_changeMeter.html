@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="@{commons/temp1}::commonHead('湖南省自来水公司营销管理信息系统')">
+</head>
+	<style type="text/css">
+	table.data thead th { vertical-align:middle; text-align:center; }
+	</style>
+<body>
+<div id="wrapper">
+	<div id="header" th:replace="@{commons/temp1}::commonHeadMenu">
+	</div>
+	<div id="masthead" th:replace="@{commons/temp1}::commonMasthead('用户申请')">
+	</div>
+	<div id="content" class="xgrid" >
+		<div class="x12">
+			<h2>快捷换表</h2>
+			<div class="searchUserDiv">
+				用户编码 <input value="0100000987" />
+				用户简码 <input value="张三" />
+				用户姓名 <input />
+				联系电话 <input />
+				家庭住址 <input />
+				<button class="btn btn-small btn-icon btn-person"><span></span>查询用户</button>
+			</div>
+			<br/><br/>
+			<h3 style="width:50%;">快捷换表</h3>
+			<table width="100%">
+				<thead>
+					<tr>
+						<th width="60"></th>
+						<th width="220"></th>
+						<th width="60"></th>
+						<th width="220"></th>
+						<th width="60"></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>用户编码</td>
+						<td><input disabled="disabled" value="0100000987" /></td>
+						<td>用户姓名</td>
+						<td><input disabled="disabled" value="张三" /></td>
+						<td>原表类型</td>
+						<td><input disabled="disabled" value="DN40" /></td>
+					</tr>
+					<tr>
+						<td>新表编号</td>
+						<td><input readonly="readonly" disabled="disabled" value="自动生成" /></td>
+						<td>表身码</td>
+						<td><input value="01010001" /></td>
+						<td>起始底码</td>
+						<td><input value="2" /></td>
+					</tr>
+					<tr>
+						<td>水表类型</td>
+						<td><select style="width:158px;">
+								<option>DN10</option>
+								<option>DN15</option>
+								<option>DN20</option>
+								<option>DN40</option>
+								<option>DN80</option>
+								<option>DN100</option>
+								<option>DN200</option>
+								<option>DN500</option>
+								<option>DN1000</option>
+							</select></td>
+						<td>水表口径</td>
+						<td><input value="40" /></td>
+						<td>最大码值</td>
+						<td><input value="99999" onClick="WdatePicker();" /></td>
+					</tr>
+					<tr>
+						<td>装表日期</td>
+						<td><input value="2010-10-27" /></td>
+						<td>水表厂家</td>
+						<td colspan="3"><input size="68" value="城至水表厂" /></td>
+					</tr>
+				</tbody>
+				</table>
+				<div style=" margin:20px 0px 0px 66px;" >
+					<button class="btn">更换水表</button>
+				</div>
+		</div> <!-- .x12 -->
+	</div> <!-- #content -->
+	<div id="footer">
+		<div class="content_pad">
+			<p>&copy; 2013-11 版权所有 <a href="#">湖南省自来水公司</a>.   技术支持 <a href="#">华瑞教育</a>.</p>
+		</div> <!-- .content_pad -->
+	</div> <!-- #footer -->
+</div> <!-- #wrapper -->
+<script src="../js/jquery/jquery-1.5.2.min.js"></script>
+<script src="../js/jquery/jquery-ui-1.8.12.custom.min.js"></script>
+<script src="../js/misc/excanvas.min.js"></script>
+<script src="../js/jquery/facebox.js"></script>
+<script src="../js/jquery/jquery.visualize.js"></script>
+<script src="../js/jquery/jquery.dataTables.min.js"></script>
+<script src="../js/jquery/jquery.tablesorter.min.js"></script>
+<script src="../js/jquery/jquery.uniform.min.js"></script>
+<script src="../js/jquery/jquery.placeholder.min.js"></script>
+<script src="../js/widgets.js"></script>
+<script src="../js/dashboard.js"></script>
+<script type="text/javascript">
+$(document).ready ( function ()
+{
+	Dashboard.init ();
+});
+</script>
+</body>
+</html>

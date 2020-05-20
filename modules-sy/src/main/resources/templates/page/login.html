@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="@{commons/temp2}::commonHead('湖南省自来水公司营销管理信息系统 - 员工登陆')">
+</head>
+<body>
+<div id="login_background">
+	<div id="login">
+		<h1>湖南自来水员工登陆</h1>
+		<div id="login_panel">
+			<form action="/SyEmp/login" method="post">
+				<div class="login_fields" style="text-align: center">
+					<span th:text="${#httpServletRequest.getAttribute('error')}" style="color:red;"></span>
+					<div class="field">
+						<label for="empNo">员工工号</label>
+						<input type="text" name="empNo" value="" id="empNo" tabindex="1" placeholder="请输入您的员工编号" />
+					</div>
+					<div class="field">
+						<label for="pwd">登陆密码</label>
+						<input type="password" name="pwd" value="" id="pwd" tabindex="2" placeholder="请输入您的密码" />
+					</div>
+				</div>
+				<div class="login_actions">
+					<button type="submit" class="btn btn-orange">登陆</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

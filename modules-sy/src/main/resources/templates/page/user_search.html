@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="@{commons/temp1}::commonHead('用户查询--湖南省自来水公司营销管理信息系统')">
+</head>
+<style type="text/css">
+	table.data thead th { vertical-align:middle; text-align:center; }
+	.tab_content { min-height:220px; }
+</style>
+<script type="text/javascript">
+    //查询用户
+    function searchUser(){
+        //因为在本地环境下，chrome浏览器的showModalDialog()之后的代码无法执行，
+        //            为了在本地也能演示，故将此代码写到showModalDialog()之前。
+        location.href = '/User/userSerch1';
+        //显示选择用户的界面
+        showWindow({url:'../page/sys_selectUser.html', callback: function(val){
+                //alert(val.addr);  //回调处理
+            }});
+    }
+</script>
+<body>
+<div id="wrapper">
+	<div id="header" th:replace="@{commons/temp1}::commonHeadMenu">
+	</div>
+	<div id="masthead" th:replace="@{commons/temp1}::commonMasthead('用户申请')">
+	</div>
+	<div id="content" class="xgrid" >
+		<div class="x12">
+			<h2>用户查询</h2>
+			<div class="searchUserDiv">
+				用户编码 <input value="0100000987" />
+				用户简码 <input />
+				用户姓名 <input value="张三" />
+				联系电话 <input />
+				家庭住址 <input />
+				<button class="btn btn-small btn-icon btn-person"
+					onclick="searchUser();"><span></span>查询用户</button>
+				</div>
+			<div class="tab_container">
+				<ul class="tabs">
+					<li><a href="#tab1">基本信息</a></li>
+					<li><a href="#tab2">水价信息</a></li>
+					<li><a href="#tab3">抄表信息</a></li>
+					<li><a href="#tab4">水费单记录</a></li>
+					<li><a href="#tab5">收费单记录</a></li>
+				</ul>
+				<div class="tab_content_container">
+					<div id="tab1" class="tab_content">
+						<div class="center">请先查询</div>
+					</div>
+					<div id="tab2" class="tab_content">
+						<div class="center">请先查询</div>
+					</div>
+					<div id="tab3" class="tab_content">
+						<div class="center">请先查询</div>
+					</div>
+					<div id="tab4" class="tab_content">
+						<div class="center">请先查询</div>
+					</div>
+					<div id="tab5" class="tab_content">
+						<div class="center">请先查询</div>
+					</div>
+				</div>
+			</div>
+		</div> <!-- .x12 -->
+	</div> <!-- #content -->
+
+	<div id="footer" th:replace="@{commons/temp1}::commonFooter">
+	</div>
+</div> <!-- #wrapper -->
+<footer th:replace="@{commons/temp1}::commonFooterJS">
+</footer>
+<script type="text/javascript">
+$(document).ready ( function ()
+{
+	Dashboard.init ();
+		//选择项初始化
+	$('.tab_container').tabs ();
+});
+</script>
+</body>
+</html>

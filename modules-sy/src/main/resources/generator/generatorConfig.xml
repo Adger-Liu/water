@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <!-- 对我们的表名，列名-->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- 改动了 重新生成只有1.3.7这个版本才行 覆盖生成XML文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <!-- 生成的实体类添加toString()方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+        <!-- 不生成注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/waterall"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+        <!-- 实体类类的位置 -->
+        <javaModelGenerator targetProject="src\main\java"
+                            targetPackage="cn.hr.modulessy.entity"/>
+
+        <!-- mapper xml的位置 -->
+        <sqlMapGenerator targetProject="src\main\resources"
+                         targetPackage="mapper"/>
+
+        <!-- mapper类的位置 -->
+        <javaClientGenerator targetProject="src\main\java"
+                             targetPackage="cn.hr.modulessyr.mapper"
+                             type="XMLMAPPER" />
+
+        <table tableName="be_comment" domainObjectName="BeComment"/>
+        <table tableName="be_flow" domainObjectName="Beflow"/>
+        <table  tableName="be_formula" domainObjectName="BeFormula"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+        <table  tableName="be_history" domainObjectName="BeHisTory"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="be_order" domainObjectName="BeOrder"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+        <table  tableName="be_order_lite" domainObjectName="BeOrderLite"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="be_order_user" domainObjectName="BeOrderUser"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="iv_archive" domainObjectName="IvArchive"
+        enableCountByExample="false" enableUpdateByExample="false"
+        enableDeleteByExample="false" enableSelectByExample="false"
+        selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="iv_ininvoice" domainObjectName="IvIninvoice"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="iv_invoice" domainObjectName="IvInvoice"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="iv_outinvoice" domainObjectName="IvOutinvoice"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="py_balance" domainObjectName="PyBalance"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="py_balance_detail" domainObjectName="PyBalanceDetail"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="py_bill" domainObjectName="PyBill"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="py_bill_detail" domainObjectName="PyBillDetail"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="py_pay" domainObjectName="PyPay"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="py_sum_report" domainObjectName="PySumReport"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="py_user_history" domainObjectName="PyUserHistory"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="rd_change_max_value" domainObjectName="RdChangeMaxValue"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="rd_change_value" domainObjectName="RdChangeValue"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="rd_read" domainObjectName="RdRead"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="rd_read_types" domainObjectName="RdReadTypes"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="rd_task" domainObjectName="RdTask"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="rd_volume" domainObjectName="RdVolume"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="rd_year_month" domainObjectName="RdYearMonth"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_area" domainObjectName="SyArea"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_cost_type" domainObjectName="SyCostType"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_dept" domainObjectName="SyDept"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_em_parea_power" domainObjectName="SyEmPareaPower"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_emp_menu_power" domainObjectName="SyEmpMenuPower"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_menu" domainObjectName="SyMenu"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_meter_type" domainObjectName="SyMeterType"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="sy_surcharge" domainObjectName="SySurcharge"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="us_formula" domainObjectName="UsFormula"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="us_meter" domainObjectName="UsMeter"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="us_sms" domainObjectName="UsSms"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+        <table  tableName="us_user" domainObjectName="UsUser"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>

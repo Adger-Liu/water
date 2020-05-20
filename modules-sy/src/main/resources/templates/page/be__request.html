@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:th="http://www.thymeleaf.org">
+<head th:replace="@{commons/temp1}::commonHead('湖南省自来水公司营销管理信息系统')">
+</head>
+<body>
+<style type="text/css">
+	a.metro {
+		float:left; margin:4px 16px; font-size:20px; font-weight:bold;
+		color:#FFFFFF;background-color:#666666;text-align:center;
+		line-height:100px;display:block;width:200px; vertical-align:middle;
+	}
+	a.metro:hover{
+		background-color:#000033; text-decoration:none;
+	}
+</style>
+<div id="wrapper">
+	<div id="header" th:replace="@{commons/temp1}::commonHeadMenu">
+	</div>
+	<div id="masthead" th:replace="@{commons/temp1}::commonMasthead('用户申请')">
+	</div>
+	<div id="content" class="xgrid">
+		<div class="x12">
+			<h2>用户申请</h2>
+			<a class="metro" href="be__request1.html">新户</a>
+			<a class="metro" href="be__request2.html">分户</a>
+			<a class="metro" href="be__request3.html">过户</a>
+			<a class="metro" href="be__request4.html">代扣</a>
+			<a class="metro" href="be__request5.html">换表</a>
+			<a class="metro" href="be__request6.html">重签</a>
+			<a class="metro" href="be__request7.html">销户</a>
+			<a class="metro" href="be__requestOrder.html">工单</a>
+		</div>
+	</div>
+	<div id="footer" th:replace="@{commons/temp1}::commonFooter">
+	</div>
+</div>
+<footer th:replace="@{commons/temp1}::commonFooterJS">
+</footer>
+<script type="text/javascript">
+    $(document).ready ( function ()
+    {
+        Dashboard.init ();
+    });
+</script>
+</body>
+</html>
