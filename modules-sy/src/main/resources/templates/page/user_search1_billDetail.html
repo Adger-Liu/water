@@ -129,17 +129,12 @@
 	</tbody>
 	</table>
 </div>
-<script src="../js/jquery/jquery-1.5.2.min.js"></script>
-<script src="../js/jquery/jquery-ui-1.8.12.custom.min.js"></script>
-<script src="../js/misc/excanvas.min.js"></script>
-<script src="../js/jquery/facebox.js"></script>
-<script src="../js/jquery/jquery.visualize.js"></script>
-<script src="../js/jquery/jquery.dataTables.min.js"></script>
-<script src="../js/jquery/jquery.tablesorter.min.js"></script>
-<script src="../js/jquery/jquery.uniform.min.js"></script>
-<script src="../js/jquery/jquery.placeholder.min.js"></script>
-<script src="../js/widgets.js"></script>
-<script src="../js/dashboard.js"></script>
+</div> <!-- #content -->
+<div id="footer" th:replace="@{commons/temp1}::commonFooter">
+</div> <!-- #footer -->
+</div> <!-- #wrapper -->
+<footer th:replace="@{commons/temp1}::commonFooterJS">
+</footer>
 <script type="text/javascript">
 $(document).ready ( function ()
 {

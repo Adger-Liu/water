@@ -26,7 +26,7 @@ public class BeOrderController {
    */
   @RequestMapping("/htmlRequest")
   public String html(){
-    return "page/be_request";
+    return "/page/be_request";
   }
 
   /**

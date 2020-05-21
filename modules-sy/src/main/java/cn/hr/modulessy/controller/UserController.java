@@ -1,5 +1,9 @@
 package cn.hr.modulessy.controller;
 
+import cn.hr.modulessy.entity.UsMeter;
+import cn.hr.modulessy.entity.UsUser;
+import cn.hr.modulessy.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,19 +16,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/User")
 public class UserController {
+  @Autowired
+  private UserService userService;
   /***
    * 这是用户查询的地址
    */
   @RequestMapping("/userSerch")
   public String userSerch(){
+
     return "page/user_search";
   }
 
   /**
    * 快捷新户的地址
    * */
-    @RequestMapping("/userAdd")
-  public String userAdd(){
+  @RequestMapping("/userAdd")
+  public String userAdd(UsUser usUser,UsMeter usMeter){
+    System.out.println("进入增加用户的方法==========");
+    System.out.println("公户还是私户：" + usUser.getUserType());
+    System.out.println("所属区域：" + usUser.getAreaId());
+    System.out.println("用户姓名：" + usUser.getUserName());
+    System.out.println("开户时间：" + usUser.getCreateDate());
+    System.out.println("收款方式：" + usUser.getPayType());
+    System.out.println("联系电话：" + usUser.getPhone());
+    System.out.println("开户银行：" + usUser.getBankName());
+    System.out.println("银行账号：" + usUser.getBankNum());
+    System.out.println("短信电话：" + usUser.getSmsPhone());
+    System.out.println("合同编号：" + usUser.getContractNum());
+    System.out.println("签订日期：" + usUser.getContractDate());
+
+    System.out.println("装表日期：" + usMeter.getSetupDate());
+    System.out.println("水表厂家：" + usMeter.getFactory());
     return "page/user_add";
   }
 
@@ -89,6 +111,8 @@ public class UserController {
    * */
   @RequestMapping("/userSendMsg")
   public String userSendMsg(){
+    System.out.println("进入短信群发的后台方法 记录  ");
+
     return "page/user_sendMsg";
   }
 

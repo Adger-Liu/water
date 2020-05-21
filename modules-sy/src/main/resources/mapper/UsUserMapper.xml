@@ -58,6 +58,7 @@
       #{contractDate,jdbcType=TIMESTAMP}, #{volumeId,jdbcType=INTEGER}, #{volumeOrderindex,jdbcType=INTEGER}, 
       #{disabled,jdbcType=BIT})
   </insert>
+
   <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.UsUser">
     insert into us_user
     <trim prefix="(" suffix=")" suffixOverrides=",">

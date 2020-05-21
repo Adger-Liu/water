@@ -11,12 +11,21 @@ public class UsMeter {
 
     private Integer meterTypeId;
 
+    /**
+     * 最大表码值
+     */
     private Integer maxValue;
 
     private Integer startValue;
 
+    /**
+     * 装表日期
+     */
     private Date setupDate;
 
+    /**
+     * 水表厂家
+     */
     private String factory;
 
     private Boolean disabled;

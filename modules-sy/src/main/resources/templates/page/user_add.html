@@ -16,7 +16,9 @@
 	</div>
 	<div id="masthead" th:replace="@{commons/temp1}::commonMasthead('用户申请')">
 	</div>
+
 	<div id="content" class="xgrid" >
+		<form action="/User/userAdd" method="post">
 		<div class="x12">
 			<h2>快捷新户</h2>
 				<table width="100%">
@@ -27,65 +29,83 @@
 						<th width="60"></th>
 						<th width="220"></th>
 						<th width="60"></th>
-						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>用户编码</td>
-						<td><input readonly="readonly" value="自动生成" disabled="disabled" /></td>
+						<td>
+							<input readonly="readonly" value="自动生成" disabled="disabled" name="" />
+						</td>
 						<td>用户类型</td>
-						<td><select style="width:156px;">
-								<option>私户</option>
-								<option>公户</option>
-							</select></td>
+						<td>
+							<select name="userType" style="width:156px;">
+								<option value="私户">私户</option>
+								<option value="公户">公户</option>
+							</select>
+						</td>
+
 						<td>所属辖区</td>
-						<td><select style="width:156px;">
-								<option>城东区</option>
-								<option>城南区</option>
-								<option>城西区</option>
-								<option>城北区</option>
-								<option>新开发区</option>
-								<option>旧城区</option>
-								<option>特别商户区</option>
+						<td><select name="areaId" style="width:156px;">
+								<option value="1">城东区</option>
+								<option value="2">城南区</option>
+								<option value="3">城西区</option>
+								<option value="4">城北区</option>
+								<option value="5">新开发区</option>
+								<option value="6">旧城区</option>
+								<option value="7">特别商户区</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td>用户名称</td>
-						<td><input value="张三" /></td>
+						<td><input type="text" name="userName"/></td>
 						<td>开户时间</td>
-						<td><input readonly="readonly" value="2010年10月27日"  disabled="disabled" /></td>
+						<td><input readonly="readonly" disabled="disabled" name="createDate" id="createDate"/></td>
+						<script>
+							let date = new Date();
+							function time() {
+                  var year = date.getFullYear(); //年
+                  var month = date.getMonth() + 1; //月
+                  var day = date.getDate(); //日
+									return year + "-" + month + "-" + day;
+              }
+              document.getElementById("createDate").value = time()
+						</script>
 						<td>收款方式</td>
-						<td><select style="width:156px;">
-								<option>坐收</option>
-								<option>走收</option>
-								<option>银行代扣</option>
-							</select></td>
+						<td>
+							<select name="payType" style="width:156px;">
+								<option value="坐收">坐收</option>
+								<option value="走收">走收</option>
+								<option value="银行代扣">银行代扣</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td>联系电话</td>
-						<td><input value="13012345678" /></td>
+						<td><input type="text" name="phone" /></td>
 						<td>开户银行</td>
-						<td><input value="建设银行" /></td>
+						<td><input type="text" name="bankName" /></td>
 						<td>银行账号</td>
-						<td><input value="1234567890123456789" /></td>
+						<td><input type="text" name="bankNum"/></td>
 					</tr>
 					<tr>
 						<td>短信电话</td>
-						<td><input value="13012345678" /></td>
+						<td><input type="text" name="smsPhone" /></td>
 						<td>用户地址</td>
-						<td colspan="3"><input size="68"
-											value="新开发区国际IT中心华瑞国际总部办公楼2219号" /></td>
+						<td colspan="3">
+							<input size="68" type="text" name="address" />
+						</td>
 					</tr>
 					<tr>
 						<td>档案编号</td>
-						<td><input value="A4954-394P1#4" /></td>
+						<td><input type="text" name="docNum" /></td>
 						<td>合同编号</td>
-						<td><input value="W20101027-19" /></td>
+						<td><input type="text" name="contractNum" /></td>
 						<td>签订日期</td>
-						<td><input onClick="WdatePicker();" value="2014-02-27" /></td>
+						<td><input type="date" name="contractDate" /></td>
 					</tr>
+
 					<tr>
 						<td style="vertical-align:middle;">提比提量</td>
 						<td colspan="5">
@@ -117,39 +137,32 @@
 							</select></td>
 						<td>水表口径</td>
 						<td><input value="40" /></td>
-						<td>最大码值</td>
-						<td><input value="99999" onClick="WdatePicker();" /></td>
+						<td>最大表码值</td>
+						<td><input name="" type="text" /></td>
 					</tr>
 					<tr>
 						<td>装表日期</td>
-						<td><input value="2010-10-27" /></td>
+						<td><input name="setupDate" /></td>
 						<td>水表厂家</td>
-						<td colspan="3"><input size="68" value="城至水表厂" /></td>
+						<td colspan="3">
+							<input size="68" name="factory"/>
+						</td>
 					</tr>
 				</tbody>
 				</table>
+
 				<div style=" margin:20px 0px 0px 66px;" >
 					<button class="btn">创建新户</button>
 				</div>
-		</div> <!-- .x12 -->
-	</div> <!-- #content -->
-	<div id="footer">
-		<div class="content_pad">
-			<p>&copy; 2013-11 版权所有 <a href="#">湖南省自来水公司</a>.   技术支持 <a href="#">华瑞教育</a>.</p>
-		</div> <!-- .content_pad -->
-	</div> <!-- #footer -->
-</div> <!-- #wrapper -->
-<script src="../js/jquery/jquery-1.5.2.min.js"></script>
-<script src="../js/jquery/jquery-ui-1.8.12.custom.min.js"></script>
-<script src="../js/misc/excanvas.min.js"></script>
-<script src="../js/jquery/facebox.js"></script>
-<script src="../js/jquery/jquery.visualize.js"></script>
-<script src="../js/jquery/jquery.dataTables.min.js"></script>
-<script src="../js/jquery/jquery.tablesorter.min.js"></script>
-<script src="../js/jquery/jquery.uniform.min.js"></script>
-<script src="../js/jquery/jquery.placeholder.min.js"></script>
-<script src="../js/widgets.js"></script>
-<script src="../js/dashboard.js"></script>
+		</div>
+		</form>
+	</div>
+</div>
+<div id="footer" th:replace="@{commons/temp1}::commonFooter">
+</div>
+</div>
+<footer th:replace="@{commons/temp1}::commonFooterJS">
+</footer>
 <script type="text/javascript">
 $(document).ready ( function ()
 {

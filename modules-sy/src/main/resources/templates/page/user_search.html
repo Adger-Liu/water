@@ -22,8 +22,10 @@
 <div id="wrapper">
 	<div id="header" th:replace="@{commons/temp1}::commonHeadMenu">
 	</div>
+
 	<div id="masthead" th:replace="@{commons/temp1}::commonMasthead('用户申请')">
 	</div>
+
 	<div id="content" class="xgrid" >
 		<div class="x12">
 			<h2>用户查询</h2>
@@ -65,11 +67,9 @@
 		</div> <!-- .x12 -->
 	</div> <!-- #content -->
 
-	<div id="footer" th:replace="@{commons/temp1}::commonFooter">
-	</div>
-</div> <!-- #wrapper -->
-<footer th:replace="@{commons/temp1}::commonFooterJS">
-</footer>
+	<div id="footer" th:replace="@{commons/temp1}::commonFooter"></div>
+</div>
+<footer th:replace="@{commons/temp1}::commonFooterJS"></footer>
 <script type="text/javascript">
 $(document).ready ( function ()
 {
