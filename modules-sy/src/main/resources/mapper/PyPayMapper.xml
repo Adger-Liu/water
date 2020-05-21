@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.PyPayMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.PyPay">
+    <id column="pay_no" jdbcType="VARCHAR" property="payNo" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="pay_date" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="Invoice" jdbcType="VARCHAR" property="invoice" />
+    <result column="pay_money" jdbcType="DECIMAL" property="payMoney" />
+    <result column="use_money" jdbcType="DECIMAL" property="useMoney" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pay_no, user_no, pay_type, pay_date, Invoice, pay_money, use_money, emp_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from py_pay
+    where pay_no = #{payNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from py_pay
+    where pay_no = #{payNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.PyPay">
+    insert into py_pay (pay_no, user_no, pay_type, 
+      pay_date, Invoice, pay_money, 
+      use_money, emp_id)
+    values (#{payNo,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, 
+      #{payDate,jdbcType=TIMESTAMP}, #{invoice,jdbcType=VARCHAR}, #{payMoney,jdbcType=DECIMAL}, 
+      #{useMoney,jdbcType=DECIMAL}, #{empId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.PyPay">
+    insert into py_pay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payNo != null">
+        pay_no,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+      <if test="invoice != null">
+        Invoice,
+      </if>
+      <if test="payMoney != null">
+        pay_money,
+      </if>
+      <if test="useMoney != null">
+        use_money,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payNo != null">
+        #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoice != null">
+        #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="payMoney != null">
+        #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="useMoney != null">
+        #{useMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.PyPay">
+    update py_pay
+    <set>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoice != null">
+        Invoice = #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="payMoney != null">
+        pay_money = #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="useMoney != null">
+        use_money = #{useMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pay_no = #{payNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.PyPay">
+    update py_pay
+    set user_no = #{userNo,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      pay_date = #{payDate,jdbcType=TIMESTAMP},
+      Invoice = #{invoice,jdbcType=VARCHAR},
+      pay_money = #{payMoney,jdbcType=DECIMAL},
+      use_money = #{useMoney,jdbcType=DECIMAL},
+      emp_id = #{empId,jdbcType=INTEGER}
+    where pay_no = #{payNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

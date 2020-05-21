@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.UsUserMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.UsUser">
+    <id column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="abc" jdbcType="VARCHAR" property="abc" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sms_phone" jdbcType="VARCHAR" property="smsPhone" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_num" jdbcType="VARCHAR" property="bankNum" />
+    <result column="formula" jdbcType="VARCHAR" property="formula" />
+    <result column="user_money" jdbcType="DECIMAL" property="userMoney" />
+    <result column="meter_id" jdbcType="INTEGER" property="meterId" />
+    <result column="doc_num" jdbcType="VARCHAR" property="docNum" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="contract_num" jdbcType="VARCHAR" property="contractNum" />
+    <result column="contract_date" jdbcType="TIMESTAMP" property="contractDate" />
+    <result column="volume_id" jdbcType="INTEGER" property="volumeId" />
+    <result column="volume_orderIndex" jdbcType="INTEGER" property="volumeOrderindex" />
+    <result column="disabled" jdbcType="BIT" property="disabled" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_no, user_name, abc, create_date, address, phone, sms_phone, area_id, user_type, 
+    pay_type, bank_name, bank_num, formula, user_money, meter_id, doc_num, pwd, contract_num, 
+    contract_date, volume_id, volume_orderIndex, disabled
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from us_user
+    where user_no = #{userNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from us_user
+    where user_no = #{userNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.UsUser">
+    insert into us_user (user_no, user_name, abc, 
+      create_date, address, phone, 
+      sms_phone, area_id, user_type, 
+      pay_type, bank_name, bank_num, 
+      formula, user_money, meter_id, 
+      doc_num, pwd, contract_num, 
+      contract_date, volume_id, volume_orderIndex, 
+      disabled)
+    values (#{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{abc,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{smsPhone,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, #{userType,jdbcType=VARCHAR}, 
+      #{payType,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, #{bankNum,jdbcType=VARCHAR}, 
+      #{formula,jdbcType=VARCHAR}, #{userMoney,jdbcType=DECIMAL}, #{meterId,jdbcType=INTEGER}, 
+      #{docNum,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, #{contractNum,jdbcType=VARCHAR}, 
+      #{contractDate,jdbcType=TIMESTAMP}, #{volumeId,jdbcType=INTEGER}, #{volumeOrderindex,jdbcType=INTEGER}, 
+      #{disabled,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.UsUser">
+    insert into us_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="abc != null">
+        abc,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="smsPhone != null">
+        sms_phone,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="bankNum != null">
+        bank_num,
+      </if>
+      <if test="formula != null">
+        formula,
+      </if>
+      <if test="userMoney != null">
+        user_money,
+      </if>
+      <if test="meterId != null">
+        meter_id,
+      </if>
+      <if test="docNum != null">
+        doc_num,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="contractNum != null">
+        contract_num,
+      </if>
+      <if test="contractDate != null">
+        contract_date,
+      </if>
+      <if test="volumeId != null">
+        volume_id,
+      </if>
+      <if test="volumeOrderindex != null">
+        volume_orderIndex,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="abc != null">
+        #{abc,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="smsPhone != null">
+        #{smsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNum != null">
+        #{bankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null">
+        #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="userMoney != null">
+        #{userMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="meterId != null">
+        #{meterId,jdbcType=INTEGER},
+      </if>
+      <if test="docNum != null">
+        #{docNum,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNum != null">
+        #{contractNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contractDate != null">
+        #{contractDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="volumeId != null">
+        #{volumeId,jdbcType=INTEGER},
+      </if>
+      <if test="volumeOrderindex != null">
+        #{volumeOrderindex,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.UsUser">
+    update us_user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="abc != null">
+        abc = #{abc,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="smsPhone != null">
+        sms_phone = #{smsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNum != null">
+        bank_num = #{bankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null">
+        formula = #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="userMoney != null">
+        user_money = #{userMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="meterId != null">
+        meter_id = #{meterId,jdbcType=INTEGER},
+      </if>
+      <if test="docNum != null">
+        doc_num = #{docNum,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNum != null">
+        contract_num = #{contractNum,jdbcType=VARCHAR},
+      </if>
+      <if test="contractDate != null">
+        contract_date = #{contractDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="volumeId != null">
+        volume_id = #{volumeId,jdbcType=INTEGER},
+      </if>
+      <if test="volumeOrderindex != null">
+        volume_orderIndex = #{volumeOrderindex,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+    </set>
+    where user_no = #{userNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.UsUser">
+    update us_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      abc = #{abc,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sms_phone = #{smsPhone,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_num = #{bankNum,jdbcType=VARCHAR},
+      formula = #{formula,jdbcType=VARCHAR},
+      user_money = #{userMoney,jdbcType=DECIMAL},
+      meter_id = #{meterId,jdbcType=INTEGER},
+      doc_num = #{docNum,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      contract_num = #{contractNum,jdbcType=VARCHAR},
+      contract_date = #{contractDate,jdbcType=TIMESTAMP},
+      volume_id = #{volumeId,jdbcType=INTEGER},
+      volume_orderIndex = #{volumeOrderindex,jdbcType=INTEGER},
+      disabled = #{disabled,jdbcType=BIT}
+    where user_no = #{userNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

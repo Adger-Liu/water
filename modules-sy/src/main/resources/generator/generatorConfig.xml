@@ -2,7 +2,6 @@
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-
 <generatorConfiguration>
     <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
 
@@ -36,16 +35,23 @@
 
         <!-- mapper类的位置 -->
         <javaClientGenerator targetProject="src\main\java"
-                             targetPackage="cn.hr.modulessyr.mapper"
+                             targetPackage="cn.hr.modulessy.mapper"
                              type="XMLMAPPER" />
 
-        <table tableName="be_comment" domainObjectName="BeComment"/>
-        <table tableName="be_flow" domainObjectName="Beflow"/>
+        <table tableName="be_comment" domainObjectName="BeComment" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
+        <table tableName="be_flow" domainObjectName="Beflow" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+
         <table  tableName="be_formula" domainObjectName="BeFormula"
                 enableCountByExample="false" enableUpdateByExample="false"
                 enableDeleteByExample="false" enableSelectByExample="false"
                 selectByExampleQueryId="false">
         </table>
+
         <table  tableName="be_history" domainObjectName="BeHisTory"
                 enableCountByExample="false" enableUpdateByExample="false"
                 enableDeleteByExample="false" enableSelectByExample="false"
@@ -57,6 +63,7 @@
                 enableDeleteByExample="false" enableSelectByExample="false"
                 selectByExampleQueryId="false">
         </table>
+
         <table  tableName="be_order_lite" domainObjectName="BeOrderLite"
                 enableCountByExample="false" enableUpdateByExample="false"
                 enableDeleteByExample="false" enableSelectByExample="false"
@@ -200,6 +207,13 @@
                 enableDeleteByExample="false" enableSelectByExample="false"
                 selectByExampleQueryId="false">
         </table>
+
+        <table  tableName="sy_emp" domainObjectName="SyEmp"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"
+                selectByExampleQueryId="false">
+        </table>
+
 
         <table  tableName="sy_emp_menu_power" domainObjectName="SyEmpMenuPower"
                 enableCountByExample="false" enableUpdateByExample="false"

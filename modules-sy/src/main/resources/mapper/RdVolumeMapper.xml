@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.RdVolumeMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.RdVolume">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="volume_name" jdbcType="VARCHAR" property="volumeName" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="order_Index" jdbcType="INTEGER" property="orderIndex" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="disabled" jdbcType="BIT" property="disabled" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, volume_name, area_id, order_Index, remark, disabled
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rd_volume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rd_volume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.RdVolume">
+    insert into rd_volume (id, volume_name, area_id, 
+      order_Index, remark, disabled
+      )
+    values (#{id,jdbcType=INTEGER}, #{volumeName,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{orderIndex,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{disabled,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.RdVolume">
+    insert into rd_volume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="volumeName != null">
+        volume_name,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="orderIndex != null">
+        order_Index,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="volumeName != null">
+        #{volumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="orderIndex != null">
+        #{orderIndex,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.RdVolume">
+    update rd_volume
+    <set>
+      <if test="volumeName != null">
+        volume_name = #{volumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="orderIndex != null">
+        order_Index = #{orderIndex,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.RdVolume">
+    update rd_volume
+    set volume_name = #{volumeName,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=INTEGER},
+      order_Index = #{orderIndex,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      disabled = #{disabled,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

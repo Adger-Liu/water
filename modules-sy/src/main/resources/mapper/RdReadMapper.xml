@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.RdReadMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.RdRead">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="read_year" jdbcType="INTEGER" property="readYear" />
+    <result column="read_month" jdbcType="INTEGER" property="readMonth" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="meter_no" jdbcType="VARCHAR" property="meterNo" />
+    <result column="max_value" jdbcType="INTEGER" property="maxValue" />
+    <result column="volume_Id" jdbcType="INTEGER" property="volumeId" />
+    <result column="volume_Index" jdbcType="INTEGER" property="volumeIndex" />
+    <result column="read_emp_id" jdbcType="INTEGER" property="readEmpId" />
+    <result column="read_date" jdbcType="TIMESTAMP" property="readDate" />
+    <result column="pre_value" jdbcType="INTEGER" property="preValue" />
+    <result column="enter" jdbcType="BIT" property="enter" />
+    <result column="cur_value" jdbcType="INTEGER" property="curValue" />
+    <result column="dial" jdbcType="BIT" property="dial" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="formula" jdbcType="VARCHAR" property="formula" />
+    <result column="audit" jdbcType="BIT" property="audit" />
+    <result column="audit_emp_id" jdbcType="INTEGER" property="auditEmpId" />
+    <result column="audit_date" jdbcType="TIMESTAMP" property="auditDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, read_year, read_month, user_no, meter_no, max_value, volume_Id, volume_Index, 
+    read_emp_id, read_date, pre_value, enter, cur_value, dial, amount, formula, audit, 
+    audit_emp_id, audit_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rd_read
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rd_read
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.RdRead">
+    insert into rd_read (id, read_year, read_month, 
+      user_no, meter_no, max_value, 
+      volume_Id, volume_Index, read_emp_id, 
+      read_date, pre_value, enter, 
+      cur_value, dial, amount, 
+      formula, audit, audit_emp_id, 
+      audit_date)
+    values (#{id,jdbcType=INTEGER}, #{readYear,jdbcType=INTEGER}, #{readMonth,jdbcType=INTEGER}, 
+      #{userNo,jdbcType=VARCHAR}, #{meterNo,jdbcType=VARCHAR}, #{maxValue,jdbcType=INTEGER}, 
+      #{volumeId,jdbcType=INTEGER}, #{volumeIndex,jdbcType=INTEGER}, #{readEmpId,jdbcType=INTEGER}, 
+      #{readDate,jdbcType=TIMESTAMP}, #{preValue,jdbcType=INTEGER}, #{enter,jdbcType=BIT}, 
+      #{curValue,jdbcType=INTEGER}, #{dial,jdbcType=BIT}, #{amount,jdbcType=INTEGER}, 
+      #{formula,jdbcType=VARCHAR}, #{audit,jdbcType=BIT}, #{auditEmpId,jdbcType=INTEGER}, 
+      #{auditDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.RdRead">
+    insert into rd_read
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="readYear != null">
+        read_year,
+      </if>
+      <if test="readMonth != null">
+        read_month,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="meterNo != null">
+        meter_no,
+      </if>
+      <if test="maxValue != null">
+        max_value,
+      </if>
+      <if test="volumeId != null">
+        volume_Id,
+      </if>
+      <if test="volumeIndex != null">
+        volume_Index,
+      </if>
+      <if test="readEmpId != null">
+        read_emp_id,
+      </if>
+      <if test="readDate != null">
+        read_date,
+      </if>
+      <if test="preValue != null">
+        pre_value,
+      </if>
+      <if test="enter != null">
+        enter,
+      </if>
+      <if test="curValue != null">
+        cur_value,
+      </if>
+      <if test="dial != null">
+        dial,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="formula != null">
+        formula,
+      </if>
+      <if test="audit != null">
+        audit,
+      </if>
+      <if test="auditEmpId != null">
+        audit_emp_id,
+      </if>
+      <if test="auditDate != null">
+        audit_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="readYear != null">
+        #{readYear,jdbcType=INTEGER},
+      </if>
+      <if test="readMonth != null">
+        #{readMonth,jdbcType=INTEGER},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="meterNo != null">
+        #{meterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        #{maxValue,jdbcType=INTEGER},
+      </if>
+      <if test="volumeId != null">
+        #{volumeId,jdbcType=INTEGER},
+      </if>
+      <if test="volumeIndex != null">
+        #{volumeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="readEmpId != null">
+        #{readEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="readDate != null">
+        #{readDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preValue != null">
+        #{preValue,jdbcType=INTEGER},
+      </if>
+      <if test="enter != null">
+        #{enter,jdbcType=BIT},
+      </if>
+      <if test="curValue != null">
+        #{curValue,jdbcType=INTEGER},
+      </if>
+      <if test="dial != null">
+        #{dial,jdbcType=BIT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="formula != null">
+        #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null">
+        #{audit,jdbcType=BIT},
+      </if>
+      <if test="auditEmpId != null">
+        #{auditEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="auditDate != null">
+        #{auditDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.RdRead">
+    update rd_read
+    <set>
+      <if test="readYear != null">
+        read_year = #{readYear,jdbcType=INTEGER},
+      </if>
+      <if test="readMonth != null">
+        read_month = #{readMonth,jdbcType=INTEGER},
+      </if>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="meterNo != null">
+        meter_no = #{meterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        max_value = #{maxValue,jdbcType=INTEGER},
+      </if>
+      <if test="volumeId != null">
+        volume_Id = #{volumeId,jdbcType=INTEGER},
+      </if>
+      <if test="volumeIndex != null">
+        volume_Index = #{volumeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="readEmpId != null">
+        read_emp_id = #{readEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="readDate != null">
+        read_date = #{readDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preValue != null">
+        pre_value = #{preValue,jdbcType=INTEGER},
+      </if>
+      <if test="enter != null">
+        enter = #{enter,jdbcType=BIT},
+      </if>
+      <if test="curValue != null">
+        cur_value = #{curValue,jdbcType=INTEGER},
+      </if>
+      <if test="dial != null">
+        dial = #{dial,jdbcType=BIT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="formula != null">
+        formula = #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null">
+        audit = #{audit,jdbcType=BIT},
+      </if>
+      <if test="auditEmpId != null">
+        audit_emp_id = #{auditEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="auditDate != null">
+        audit_date = #{auditDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.RdRead">
+    update rd_read
+    set read_year = #{readYear,jdbcType=INTEGER},
+      read_month = #{readMonth,jdbcType=INTEGER},
+      user_no = #{userNo,jdbcType=VARCHAR},
+      meter_no = #{meterNo,jdbcType=VARCHAR},
+      max_value = #{maxValue,jdbcType=INTEGER},
+      volume_Id = #{volumeId,jdbcType=INTEGER},
+      volume_Index = #{volumeIndex,jdbcType=INTEGER},
+      read_emp_id = #{readEmpId,jdbcType=INTEGER},
+      read_date = #{readDate,jdbcType=TIMESTAMP},
+      pre_value = #{preValue,jdbcType=INTEGER},
+      enter = #{enter,jdbcType=BIT},
+      cur_value = #{curValue,jdbcType=INTEGER},
+      dial = #{dial,jdbcType=BIT},
+      amount = #{amount,jdbcType=INTEGER},
+      formula = #{formula,jdbcType=VARCHAR},
+      audit = #{audit,jdbcType=BIT},
+      audit_emp_id = #{auditEmpId,jdbcType=INTEGER},
+      audit_date = #{auditDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

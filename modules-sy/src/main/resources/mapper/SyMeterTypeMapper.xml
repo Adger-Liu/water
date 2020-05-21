@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.SyMeterTypeMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.SyMeterType">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="meter_type_name" jdbcType="VARCHAR" property="meterTypeName" />
+    <result column="aperture" jdbcType="INTEGER" property="aperture" />
+    <result column="mavvalue" jdbcType="INTEGER" property="mavvalue" />
+    <result column="minvalue" jdbcType="INTEGER" property="minvalue" />
+    <result column="life" jdbcType="INTEGER" property="life" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="disabled" jdbcType="BIT" property="disabled" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, meter_type_name, aperture, mavvalue, minvalue, life, remark, disabled
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sy_meter_type
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sy_meter_type
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.SyMeterType">
+    insert into sy_meter_type (id, meter_type_name, aperture, 
+      mavvalue, minvalue, life, 
+      remark, disabled)
+    values (#{id,jdbcType=INTEGER}, #{meterTypeName,jdbcType=VARCHAR}, #{aperture,jdbcType=INTEGER}, 
+      #{mavvalue,jdbcType=INTEGER}, #{minvalue,jdbcType=INTEGER}, #{life,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{disabled,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.SyMeterType">
+    insert into sy_meter_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="meterTypeName != null">
+        meter_type_name,
+      </if>
+      <if test="aperture != null">
+        aperture,
+      </if>
+      <if test="mavvalue != null">
+        mavvalue,
+      </if>
+      <if test="minvalue != null">
+        minvalue,
+      </if>
+      <if test="life != null">
+        life,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="meterTypeName != null">
+        #{meterTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="aperture != null">
+        #{aperture,jdbcType=INTEGER},
+      </if>
+      <if test="mavvalue != null">
+        #{mavvalue,jdbcType=INTEGER},
+      </if>
+      <if test="minvalue != null">
+        #{minvalue,jdbcType=INTEGER},
+      </if>
+      <if test="life != null">
+        #{life,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.SyMeterType">
+    update sy_meter_type
+    <set>
+      <if test="meterTypeName != null">
+        meter_type_name = #{meterTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="aperture != null">
+        aperture = #{aperture,jdbcType=INTEGER},
+      </if>
+      <if test="mavvalue != null">
+        mavvalue = #{mavvalue,jdbcType=INTEGER},
+      </if>
+      <if test="minvalue != null">
+        minvalue = #{minvalue,jdbcType=INTEGER},
+      </if>
+      <if test="life != null">
+        life = #{life,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.SyMeterType">
+    update sy_meter_type
+    set meter_type_name = #{meterTypeName,jdbcType=VARCHAR},
+      aperture = #{aperture,jdbcType=INTEGER},
+      mavvalue = #{mavvalue,jdbcType=INTEGER},
+      minvalue = #{minvalue,jdbcType=INTEGER},
+      life = #{life,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      disabled = #{disabled,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

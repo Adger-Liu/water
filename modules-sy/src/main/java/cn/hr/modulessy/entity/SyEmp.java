@@ -1,88 +1,90 @@
 package cn.hr.modulessy.entity;
 
-import java.io.Serializable;
+public class SyEmp {
+    private Integer id;
 
-/**
- * Created with IntelliJ IDEA.
- * 系统员工的实体类
- * @Auther: Adger
- * @Date: 2020/05/18/10:09
- */
-public class SyEmp implements Serializable {
-  private Integer id;
-  private String empName;
-  private String empNo;
-  private String pwd;
-  private Integer deptId;
-  private String remark;
-  private String disabled;
+    private String empName;
 
-  public Integer getId() {
-    return id;
-  }
+    private String empNo;
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+    private String pwd;
 
-  public String getEmpName() {
-    return empName;
-  }
+    private Integer deptId;
 
-  public void setEmpName(String empName) {
-    this.empName = empName;
-  }
+    private String remark;
 
-  public String getEmpNo() {
-    return empNo;
-  }
+    private Boolean disabled;
 
-  public void setEmpNo(String empNo) {
-    this.empNo = empNo;
-  }
+    public Integer getId() {
+        return id;
+    }
 
-  public String getPwd() {
-    return pwd;
-  }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-  public void setPwd(String pwd) {
-    this.pwd = pwd;
-  }
+    public String getEmpName() {
+        return empName;
+    }
 
-  public Integer getDeptId() {
-    return deptId;
-  }
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
 
-  public void setDeptId(Integer deptId) {
-    this.deptId = deptId;
-  }
+    public String getEmpNo() {
+        return empNo;
+    }
 
-  public String getRemark() {
-    return remark;
-  }
+    public void setEmpNo(String empNo) {
+        this.empNo = empNo;
+    }
 
-  public void setRemark(String remark) {
-    this.remark = remark;
-  }
+    public String getPwd() {
+        return pwd;
+    }
 
-  public String getDisabled() {
-    return disabled;
-  }
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 
-  public void setDisabled(String disabled) {
-    this.disabled = disabled;
-  }
+    public Integer getDeptId() {
+        return deptId;
+    }
 
-  @Override
-  public String toString() {
-    return "SyEmp{" +
-      "id=" + id +
-      ", empName='" + empName + '\'' +
-      ", empNo='" + empNo + '\'' +
-      ", pwd='" + pwd + '\'' +
-      ", deptId=" + deptId +
-      ", remark='" + remark + '\'' +
-      ", disabled='" + disabled + '\'' +
-      '}';
-  }
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Boolean getDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", empName=").append(empName);
+        sb.append(", empNo=").append(empNo);
+        sb.append(", pwd=").append(pwd);
+        sb.append(", deptId=").append(deptId);
+        sb.append(", remark=").append(remark);
+        sb.append(", disabled=").append(disabled);
+        sb.append("]");
+        return sb.toString();
+    }
 }

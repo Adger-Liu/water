@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.UsMeterMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.UsMeter">
+    <id column="meter_no" jdbcType="VARCHAR" property="meterNo" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="meter_name" jdbcType="VARCHAR" property="meterName" />
+    <result column="meter_type_id" jdbcType="INTEGER" property="meterTypeId" />
+    <result column="max_value" jdbcType="INTEGER" property="maxValue" />
+    <result column="start_value" jdbcType="INTEGER" property="startValue" />
+    <result column="setup_date" jdbcType="TIMESTAMP" property="setupDate" />
+    <result column="factory" jdbcType="VARCHAR" property="factory" />
+    <result column="disabled" jdbcType="BIT" property="disabled" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    meter_no, user_no, meter_name, meter_type_id, max_value, start_value, setup_date, 
+    factory, disabled
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from us_meter
+    where meter_no = #{meterNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from us_meter
+    where meter_no = #{meterNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.UsMeter">
+    insert into us_meter (meter_no, user_no, meter_name, 
+      meter_type_id, max_value, start_value, 
+      setup_date, factory, disabled
+      )
+    values (#{meterNo,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{meterName,jdbcType=VARCHAR}, 
+      #{meterTypeId,jdbcType=INTEGER}, #{maxValue,jdbcType=INTEGER}, #{startValue,jdbcType=INTEGER}, 
+      #{setupDate,jdbcType=TIMESTAMP}, #{factory,jdbcType=VARCHAR}, #{disabled,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.UsMeter">
+    insert into us_meter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="meterNo != null">
+        meter_no,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="meterName != null">
+        meter_name,
+      </if>
+      <if test="meterTypeId != null">
+        meter_type_id,
+      </if>
+      <if test="maxValue != null">
+        max_value,
+      </if>
+      <if test="startValue != null">
+        start_value,
+      </if>
+      <if test="setupDate != null">
+        setup_date,
+      </if>
+      <if test="factory != null">
+        factory,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="meterNo != null">
+        #{meterNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="meterName != null">
+        #{meterName,jdbcType=VARCHAR},
+      </if>
+      <if test="meterTypeId != null">
+        #{meterTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="maxValue != null">
+        #{maxValue,jdbcType=INTEGER},
+      </if>
+      <if test="startValue != null">
+        #{startValue,jdbcType=INTEGER},
+      </if>
+      <if test="setupDate != null">
+        #{setupDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="factory != null">
+        #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.UsMeter">
+    update us_meter
+    <set>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="meterName != null">
+        meter_name = #{meterName,jdbcType=VARCHAR},
+      </if>
+      <if test="meterTypeId != null">
+        meter_type_id = #{meterTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="maxValue != null">
+        max_value = #{maxValue,jdbcType=INTEGER},
+      </if>
+      <if test="startValue != null">
+        start_value = #{startValue,jdbcType=INTEGER},
+      </if>
+      <if test="setupDate != null">
+        setup_date = #{setupDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="factory != null">
+        factory = #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+    </set>
+    where meter_no = #{meterNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.UsMeter">
+    update us_meter
+    set user_no = #{userNo,jdbcType=VARCHAR},
+      meter_name = #{meterName,jdbcType=VARCHAR},
+      meter_type_id = #{meterTypeId,jdbcType=INTEGER},
+      max_value = #{maxValue,jdbcType=INTEGER},
+      start_value = #{startValue,jdbcType=INTEGER},
+      setup_date = #{setupDate,jdbcType=TIMESTAMP},
+      factory = #{factory,jdbcType=VARCHAR},
+      disabled = #{disabled,jdbcType=BIT}
+    where meter_no = #{meterNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

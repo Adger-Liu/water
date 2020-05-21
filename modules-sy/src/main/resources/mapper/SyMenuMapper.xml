@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.SyMenuMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.SyMenu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="parent" jdbcType="INTEGER" property="parent" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="on_click" jdbcType="VARCHAR" property="onClick" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="order_Index" jdbcType="INTEGER" property="orderIndex" />
+    <result column="flow_id" jdbcType="INTEGER" property="flowId" />
+    <result column="disabled" jdbcType="BIT" property="disabled" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, menu_name, parent, url, on_click, icon, order_Index, flow_id, disabled
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sy_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sy_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.SyMenu">
+    insert into sy_menu (id, menu_name, parent, 
+      url, on_click, icon, 
+      order_Index, flow_id, disabled
+      )
+    values (#{id,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{parent,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR}, #{onClick,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{orderIndex,jdbcType=INTEGER}, #{flowId,jdbcType=INTEGER}, #{disabled,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.SyMenu">
+    insert into sy_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="parent != null">
+        parent,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="onClick != null">
+        on_click,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="orderIndex != null">
+        order_Index,
+      </if>
+      <if test="flowId != null">
+        flow_id,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null">
+        #{parent,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="onClick != null">
+        #{onClick,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="orderIndex != null">
+        #{orderIndex,jdbcType=INTEGER},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.SyMenu">
+    update sy_menu
+    <set>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null">
+        parent = #{parent,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="onClick != null">
+        on_click = #{onClick,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="orderIndex != null">
+        order_Index = #{orderIndex,jdbcType=INTEGER},
+      </if>
+      <if test="flowId != null">
+        flow_id = #{flowId,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.SyMenu">
+    update sy_menu
+    set menu_name = #{menuName,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      on_click = #{onClick,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      order_Index = #{orderIndex,jdbcType=INTEGER},
+      flow_id = #{flowId,jdbcType=INTEGER},
+      disabled = #{disabled,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

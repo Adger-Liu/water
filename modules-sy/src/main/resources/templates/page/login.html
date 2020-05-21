@@ -12,11 +12,11 @@
 					<span th:text="${#httpServletRequest.getAttribute('error')}" style="color:red;"></span>
 					<div class="field">
 						<label for="empNo">员工工号</label>
-						<input type="text" name="empNo" value="" id="empNo" tabindex="1" placeholder="请输入您的员工编号" />
+						<input type="text" name="empNo" value="" id="empNo" tabindex="1" placeholder="请输入您的员工编号" required/>
 					</div>
 					<div class="field">
 						<label for="pwd">登陆密码</label>
-						<input type="password" name="pwd" value="" id="pwd" tabindex="2" placeholder="请输入您的密码" />
+						<input type="password" name="pwd" value="" id="pwd" tabindex="2" placeholder="请输入您的密码" required/>
 					</div>
 				</div>
 				<div class="login_actions">

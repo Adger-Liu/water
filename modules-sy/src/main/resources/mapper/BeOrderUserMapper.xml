@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.BeOrderUserMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.BeOrderUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sms_phone" jdbcType="VARCHAR" property="smsPhone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="project_money" jdbcType="DECIMAL" property="projectMoney" />
+    <result column="real_money" jdbcType="DECIMAL" property="realMoney" />
+    <result column="invoice_no" jdbcType="VARCHAR" property="invoiceNo" />
+    <result column="formula" jdbcType="VARCHAR" property="formula" />
+    <result column="contract_num" jdbcType="VARCHAR" property="contractNum" />
+    <result column="meter_type_id" jdbcType="INTEGER" property="meterTypeId" />
+    <result column="meter_name" jdbcType="VARCHAR" property="meterName" />
+    <result column="max_value" jdbcType="INTEGER" property="maxValue" />
+    <result column="start_value" jdbcType="INTEGER" property="startValue" />
+    <result column="meter_factory" jdbcType="VARCHAR" property="meterFactory" />
+    <result column="doc_num" jdbcType="VARCHAR" property="docNum" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, user_name, phone, sms_phone, address, project_money, real_money, invoice_no, 
+    formula, contract_num, meter_type_id, meter_name, max_value, start_value, meter_factory, 
+    doc_num, user_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from be_order_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from be_order_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.BeOrderUser">
+    insert into be_order_user (id, order_no, user_name, 
+      phone, sms_phone, address, 
+      project_money, real_money, invoice_no, 
+      formula, contract_num, meter_type_id, 
+      meter_name, max_value, start_value, 
+      meter_factory, doc_num, user_no
+      )
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{smsPhone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{projectMoney,jdbcType=DECIMAL}, #{realMoney,jdbcType=DECIMAL}, #{invoiceNo,jdbcType=VARCHAR}, 
+      #{formula,jdbcType=VARCHAR}, #{contractNum,jdbcType=VARCHAR}, #{meterTypeId,jdbcType=INTEGER}, 
+      #{meterName,jdbcType=VARCHAR}, #{maxValue,jdbcType=INTEGER}, #{startValue,jdbcType=INTEGER}, 
+      #{meterFactory,jdbcType=VARCHAR}, #{docNum,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.BeOrderUser">
+    insert into be_order_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="smsPhone != null">
+        sms_phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="projectMoney != null">
+        project_money,
+      </if>
+      <if test="realMoney != null">
+        real_money,
+      </if>
+      <if test="invoiceNo != null">
+        invoice_no,
+      </if>
+      <if test="formula != null">
+        formula,
+      </if>
+      <if test="contractNum != null">
+        contract_num,
+      </if>
+      <if test="meterTypeId != null">
+        meter_type_id,
+      </if>
+      <if test="meterName != null">
+        meter_name,
+      </if>
+      <if test="maxValue != null">
+        max_value,
+      </if>
+      <if test="startValue != null">
+        start_value,
+      </if>
+      <if test="meterFactory != null">
+        meter_factory,
+      </if>
+      <if test="docNum != null">
+        doc_num,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="smsPhone != null">
+        #{smsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMoney != null">
+        #{projectMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="realMoney != null">
+        #{realMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="invoiceNo != null">
+        #{invoiceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null">
+        #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNum != null">
+        #{contractNum,jdbcType=VARCHAR},
+      </if>
+      <if test="meterTypeId != null">
+        #{meterTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="meterName != null">
+        #{meterName,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        #{maxValue,jdbcType=INTEGER},
+      </if>
+      <if test="startValue != null">
+        #{startValue,jdbcType=INTEGER},
+      </if>
+      <if test="meterFactory != null">
+        #{meterFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="docNum != null">
+        #{docNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.BeOrderUser">
+    update be_order_user
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="smsPhone != null">
+        sms_phone = #{smsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMoney != null">
+        project_money = #{projectMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="realMoney != null">
+        real_money = #{realMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="invoiceNo != null">
+        invoice_no = #{invoiceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null">
+        formula = #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNum != null">
+        contract_num = #{contractNum,jdbcType=VARCHAR},
+      </if>
+      <if test="meterTypeId != null">
+        meter_type_id = #{meterTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="meterName != null">
+        meter_name = #{meterName,jdbcType=VARCHAR},
+      </if>
+      <if test="maxValue != null">
+        max_value = #{maxValue,jdbcType=INTEGER},
+      </if>
+      <if test="startValue != null">
+        start_value = #{startValue,jdbcType=INTEGER},
+      </if>
+      <if test="meterFactory != null">
+        meter_factory = #{meterFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="docNum != null">
+        doc_num = #{docNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.BeOrderUser">
+    update be_order_user
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sms_phone = #{smsPhone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      project_money = #{projectMoney,jdbcType=DECIMAL},
+      real_money = #{realMoney,jdbcType=DECIMAL},
+      invoice_no = #{invoiceNo,jdbcType=VARCHAR},
+      formula = #{formula,jdbcType=VARCHAR},
+      contract_num = #{contractNum,jdbcType=VARCHAR},
+      meter_type_id = #{meterTypeId,jdbcType=INTEGER},
+      meter_name = #{meterName,jdbcType=VARCHAR},
+      max_value = #{maxValue,jdbcType=INTEGER},
+      start_value = #{startValue,jdbcType=INTEGER},
+      meter_factory = #{meterFactory,jdbcType=VARCHAR},
+      doc_num = #{docNum,jdbcType=VARCHAR},
+      user_no = #{userNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

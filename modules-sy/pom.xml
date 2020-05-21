@@ -71,7 +71,7 @@
             </plugin>
 
             <!-- mybatis generator 自动生成代码插件 最低选择这个版本 -->
-            <!--<plugin>
+            <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.7</version>
@@ -87,7 +87,7 @@
                         <version>5.1.37</version>
                     </dependency>
                 </dependencies>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 

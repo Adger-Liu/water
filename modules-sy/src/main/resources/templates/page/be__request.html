@@ -18,11 +18,11 @@
 	<div id="header" th:replace="@{commons/temp1}::commonHeadMenu">
 	</div>
 	<div id="masthead" th:replace="@{commons/temp1}::commonMasthead('用户申请')">
-	</div>
+	</div> <!-- #masthead -->
 	<div id="content" class="xgrid">
 		<div class="x12">
 			<h2>用户申请</h2>
-			<a class="metro" href="be__request1.html">新户</a>
+			<a class="metro" href="/BeOrder/htmlRequest1">新户</a>
 			<a class="metro" href="be__request2.html">分户</a>
 			<a class="metro" href="be__request3.html">过户</a>
 			<a class="metro" href="be__request4.html">代扣</a>
@@ -30,11 +30,11 @@
 			<a class="metro" href="be__request6.html">重签</a>
 			<a class="metro" href="be__request7.html">销户</a>
 			<a class="metro" href="be__requestOrder.html">工单</a>
-		</div>
-	</div>
+		</div> <!-- .x12 -->
+	</div> <!-- #content -->
 	<div id="footer" th:replace="@{commons/temp1}::commonFooter">
-	</div>
-</div>
+	</div> <!-- #footer -->
+</div> <!-- #wrapper -->
 <footer th:replace="@{commons/temp1}::commonFooterJS">
 </footer>
 <script type="text/javascript">

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.PyBalanceDetailMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.PyBalanceDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="balance_date" jdbcType="TIMESTAMP" property="balanceDate" />
+    <result column="balance_money" jdbcType="DECIMAL" property="balanceMoney" />
+    <result column="bill_no" jdbcType="VARCHAR" property="billNo" />
+    <result column="bill_detail_id" jdbcType="INTEGER" property="billDetailId" />
+    <result column="cost_type_code" jdbcType="VARCHAR" property="costTypeCode" />
+    <result column="detail_real_money1" jdbcType="DECIMAL" property="detailRealMoney1" />
+    <result column="detail_real_money2" jdbcType="DECIMAL" property="detailRealMoney2" />
+    <result column="pay_no" jdbcType="VARCHAR" property="payNo" />
+    <result column="pay_use_money1" jdbcType="DECIMAL" property="payUseMoney1" />
+    <result column="pay_use_money2" jdbcType="DECIMAL" property="payUseMoney2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, parent_id, user_no, balance_date, balance_money, bill_no, bill_detail_id, cost_type_code, 
+    detail_real_money1, detail_real_money2, pay_no, pay_use_money1, pay_use_money2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from py_balance_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from py_balance_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.PyBalanceDetail">
+    insert into py_balance_detail (id, parent_id, user_no, 
+      balance_date, balance_money, bill_no, 
+      bill_detail_id, cost_type_code, detail_real_money1, 
+      detail_real_money2, pay_no, pay_use_money1, 
+      pay_use_money2)
+    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{userNo,jdbcType=VARCHAR}, 
+      #{balanceDate,jdbcType=TIMESTAMP}, #{balanceMoney,jdbcType=DECIMAL}, #{billNo,jdbcType=VARCHAR}, 
+      #{billDetailId,jdbcType=INTEGER}, #{costTypeCode,jdbcType=VARCHAR}, #{detailRealMoney1,jdbcType=DECIMAL}, 
+      #{detailRealMoney2,jdbcType=DECIMAL}, #{payNo,jdbcType=VARCHAR}, #{payUseMoney1,jdbcType=DECIMAL}, 
+      #{payUseMoney2,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.PyBalanceDetail">
+    insert into py_balance_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="balanceDate != null">
+        balance_date,
+      </if>
+      <if test="balanceMoney != null">
+        balance_money,
+      </if>
+      <if test="billNo != null">
+        bill_no,
+      </if>
+      <if test="billDetailId != null">
+        bill_detail_id,
+      </if>
+      <if test="costTypeCode != null">
+        cost_type_code,
+      </if>
+      <if test="detailRealMoney1 != null">
+        detail_real_money1,
+      </if>
+      <if test="detailRealMoney2 != null">
+        detail_real_money2,
+      </if>
+      <if test="payNo != null">
+        pay_no,
+      </if>
+      <if test="payUseMoney1 != null">
+        pay_use_money1,
+      </if>
+      <if test="payUseMoney2 != null">
+        pay_use_money2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceDate != null">
+        #{balanceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balanceMoney != null">
+        #{balanceMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="billNo != null">
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="billDetailId != null">
+        #{billDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="costTypeCode != null">
+        #{costTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="detailRealMoney1 != null">
+        #{detailRealMoney1,jdbcType=DECIMAL},
+      </if>
+      <if test="detailRealMoney2 != null">
+        #{detailRealMoney2,jdbcType=DECIMAL},
+      </if>
+      <if test="payNo != null">
+        #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payUseMoney1 != null">
+        #{payUseMoney1,jdbcType=DECIMAL},
+      </if>
+      <if test="payUseMoney2 != null">
+        #{payUseMoney2,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.PyBalanceDetail">
+    update py_balance_detail
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceDate != null">
+        balance_date = #{balanceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balanceMoney != null">
+        balance_money = #{balanceMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="billNo != null">
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="billDetailId != null">
+        bill_detail_id = #{billDetailId,jdbcType=INTEGER},
+      </if>
+      <if test="costTypeCode != null">
+        cost_type_code = #{costTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="detailRealMoney1 != null">
+        detail_real_money1 = #{detailRealMoney1,jdbcType=DECIMAL},
+      </if>
+      <if test="detailRealMoney2 != null">
+        detail_real_money2 = #{detailRealMoney2,jdbcType=DECIMAL},
+      </if>
+      <if test="payNo != null">
+        pay_no = #{payNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payUseMoney1 != null">
+        pay_use_money1 = #{payUseMoney1,jdbcType=DECIMAL},
+      </if>
+      <if test="payUseMoney2 != null">
+        pay_use_money2 = #{payUseMoney2,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.PyBalanceDetail">
+    update py_balance_detail
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      user_no = #{userNo,jdbcType=VARCHAR},
+      balance_date = #{balanceDate,jdbcType=TIMESTAMP},
+      balance_money = #{balanceMoney,jdbcType=DECIMAL},
+      bill_no = #{billNo,jdbcType=VARCHAR},
+      bill_detail_id = #{billDetailId,jdbcType=INTEGER},
+      cost_type_code = #{costTypeCode,jdbcType=VARCHAR},
+      detail_real_money1 = #{detailRealMoney1,jdbcType=DECIMAL},
+      detail_real_money2 = #{detailRealMoney2,jdbcType=DECIMAL},
+      pay_no = #{payNo,jdbcType=VARCHAR},
+      pay_use_money1 = #{payUseMoney1,jdbcType=DECIMAL},
+      pay_use_money2 = #{payUseMoney2,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

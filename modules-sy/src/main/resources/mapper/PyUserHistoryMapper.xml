@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.PyUserHistoryMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.PyUserHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="pre_value" jdbcType="INTEGER" property="preValue" />
+    <result column="cur_value" jdbcType="INTEGER" property="curValue" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="bill_money" jdbcType="DECIMAL" property="billMoney" />
+    <result column="pay_money" jdbcType="DECIMAL" property="payMoney" />
+    <result column="user_money" jdbcType="DECIMAL" property="userMoney" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_no, type, order_no, date, pre_value, cur_value, amount, bill_money, pay_money, 
+    user_money
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from py_user_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from py_user_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.PyUserHistory">
+    insert into py_user_history (id, user_no, type, 
+      order_no, date, pre_value, 
+      cur_value, amount, bill_money, 
+      pay_money, user_money)
+    values (#{id,jdbcType=INTEGER}, #{userNo,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{orderNo,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{preValue,jdbcType=INTEGER}, 
+      #{curValue,jdbcType=INTEGER}, #{amount,jdbcType=INTEGER}, #{billMoney,jdbcType=DECIMAL}, 
+      #{payMoney,jdbcType=DECIMAL}, #{userMoney,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.PyUserHistory">
+    insert into py_user_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="preValue != null">
+        pre_value,
+      </if>
+      <if test="curValue != null">
+        cur_value,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="billMoney != null">
+        bill_money,
+      </if>
+      <if test="payMoney != null">
+        pay_money,
+      </if>
+      <if test="userMoney != null">
+        user_money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preValue != null">
+        #{preValue,jdbcType=INTEGER},
+      </if>
+      <if test="curValue != null">
+        #{curValue,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="billMoney != null">
+        #{billMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMoney != null">
+        #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="userMoney != null">
+        #{userMoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.PyUserHistory">
+    update py_user_history
+    <set>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="preValue != null">
+        pre_value = #{preValue,jdbcType=INTEGER},
+      </if>
+      <if test="curValue != null">
+        cur_value = #{curValue,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="billMoney != null">
+        bill_money = #{billMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payMoney != null">
+        pay_money = #{payMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="userMoney != null">
+        user_money = #{userMoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.PyUserHistory">
+    update py_user_history
+    set user_no = #{userNo,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP},
+      pre_value = #{preValue,jdbcType=INTEGER},
+      cur_value = #{curValue,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      bill_money = #{billMoney,jdbcType=DECIMAL},
+      pay_money = #{payMoney,jdbcType=DECIMAL},
+      user_money = #{userMoney,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

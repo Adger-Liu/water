@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.IvArchiveMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.IvArchive">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="emp_id" jdbcType="INTEGER" property="empId" />
+    <result column="In_id" jdbcType="INTEGER" property="inId" />
+    <result column="start_no" jdbcType="VARCHAR" property="startNo" />
+    <result column="end_no" jdbcType="VARCHAR" property="endNo" />
+    <result column="counts" jdbcType="INTEGER" property="counts" />
+    <result column="archive_date" jdbcType="TIMESTAMP" property="archiveDate" />
+    <result column="archive_emp_id" jdbcType="INTEGER" property="archiveEmpId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, emp_id, In_id, start_no, end_no, counts, archive_date, archive_emp_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iv_archive
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iv_archive
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.IvArchive">
+    insert into iv_archive (id, emp_id, In_id, 
+      start_no, end_no, counts, 
+      archive_date, archive_emp_id)
+    values (#{id,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{inId,jdbcType=INTEGER}, 
+      #{startNo,jdbcType=VARCHAR}, #{endNo,jdbcType=VARCHAR}, #{counts,jdbcType=INTEGER}, 
+      #{archiveDate,jdbcType=TIMESTAMP}, #{archiveEmpId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.IvArchive">
+    insert into iv_archive
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+      <if test="inId != null">
+        In_id,
+      </if>
+      <if test="startNo != null">
+        start_no,
+      </if>
+      <if test="endNo != null">
+        end_no,
+      </if>
+      <if test="counts != null">
+        counts,
+      </if>
+      <if test="archiveDate != null">
+        archive_date,
+      </if>
+      <if test="archiveEmpId != null">
+        archive_emp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="inId != null">
+        #{inId,jdbcType=INTEGER},
+      </if>
+      <if test="startNo != null">
+        #{startNo,jdbcType=VARCHAR},
+      </if>
+      <if test="endNo != null">
+        #{endNo,jdbcType=VARCHAR},
+      </if>
+      <if test="counts != null">
+        #{counts,jdbcType=INTEGER},
+      </if>
+      <if test="archiveDate != null">
+        #{archiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archiveEmpId != null">
+        #{archiveEmpId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.IvArchive">
+    update iv_archive
+    <set>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="inId != null">
+        In_id = #{inId,jdbcType=INTEGER},
+      </if>
+      <if test="startNo != null">
+        start_no = #{startNo,jdbcType=VARCHAR},
+      </if>
+      <if test="endNo != null">
+        end_no = #{endNo,jdbcType=VARCHAR},
+      </if>
+      <if test="counts != null">
+        counts = #{counts,jdbcType=INTEGER},
+      </if>
+      <if test="archiveDate != null">
+        archive_date = #{archiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archiveEmpId != null">
+        archive_emp_id = #{archiveEmpId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.IvArchive">
+    update iv_archive
+    set emp_id = #{empId,jdbcType=INTEGER},
+      In_id = #{inId,jdbcType=INTEGER},
+      start_no = #{startNo,jdbcType=VARCHAR},
+      end_no = #{endNo,jdbcType=VARCHAR},
+      counts = #{counts,jdbcType=INTEGER},
+      archive_date = #{archiveDate,jdbcType=TIMESTAMP},
+      archive_emp_id = #{archiveEmpId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

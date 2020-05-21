@@ -1,7 +1,7 @@
 package cn.hr.modulessy.service.impl;
 
 import cn.hr.modulessy.entity.SyEmp;
-import cn.hr.modulessy.mapper.SysEmpMapper;
+import cn.hr.modulessy.mapper.SyEmpMapper;
 import cn.hr.modulessy.service.SyEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.List;
 @Transactional
 public class SyEmpServiceImpl implements SyEmpService {
   @Autowired
-  private SysEmpMapper sysEmpMapper;
+  private SyEmpMapper sysEmpMapper;
 
   @Override
   public List<SyEmp> query(SyEmp syEmp) {

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.RdYearMonthMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.RdYearMonth">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="read_year" jdbcType="INTEGER" property="readYear" />
+    <result column="read_month" jdbcType="INTEGER" property="readMonth" />
+    <result column="Is_current" jdbcType="BIT" property="isCurrent" />
+    <result column="Init_emp_id" jdbcType="INTEGER" property="initEmpId" />
+    <result column="Init_date" jdbcType="TIMESTAMP" property="initDate" />
+    <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, read_year, read_month, Is_current, Init_emp_id, Init_date, end_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rd_year_month
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from rd_year_month
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.RdYearMonth">
+    insert into rd_year_month (id, read_year, read_month, 
+      Is_current, Init_emp_id, Init_date, 
+      end_date)
+    values (#{id,jdbcType=INTEGER}, #{readYear,jdbcType=INTEGER}, #{readMonth,jdbcType=INTEGER}, 
+      #{isCurrent,jdbcType=BIT}, #{initEmpId,jdbcType=INTEGER}, #{initDate,jdbcType=TIMESTAMP}, 
+      #{endDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.RdYearMonth">
+    insert into rd_year_month
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="readYear != null">
+        read_year,
+      </if>
+      <if test="readMonth != null">
+        read_month,
+      </if>
+      <if test="isCurrent != null">
+        Is_current,
+      </if>
+      <if test="initEmpId != null">
+        Init_emp_id,
+      </if>
+      <if test="initDate != null">
+        Init_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="readYear != null">
+        #{readYear,jdbcType=INTEGER},
+      </if>
+      <if test="readMonth != null">
+        #{readMonth,jdbcType=INTEGER},
+      </if>
+      <if test="isCurrent != null">
+        #{isCurrent,jdbcType=BIT},
+      </if>
+      <if test="initEmpId != null">
+        #{initEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="initDate != null">
+        #{initDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.RdYearMonth">
+    update rd_year_month
+    <set>
+      <if test="readYear != null">
+        read_year = #{readYear,jdbcType=INTEGER},
+      </if>
+      <if test="readMonth != null">
+        read_month = #{readMonth,jdbcType=INTEGER},
+      </if>
+      <if test="isCurrent != null">
+        Is_current = #{isCurrent,jdbcType=BIT},
+      </if>
+      <if test="initEmpId != null">
+        Init_emp_id = #{initEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="initDate != null">
+        Init_date = #{initDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.RdYearMonth">
+    update rd_year_month
+    set read_year = #{readYear,jdbcType=INTEGER},
+      read_month = #{readMonth,jdbcType=INTEGER},
+      Is_current = #{isCurrent,jdbcType=BIT},
+      Init_emp_id = #{initEmpId,jdbcType=INTEGER},
+      Init_date = #{initDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

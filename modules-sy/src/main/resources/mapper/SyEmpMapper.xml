@@ -1,8 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hr.modulessy.mapper.SysEmpMapper">
-    <select id="getById" resultType="cn.hr.modulessy.entity.SyEmp">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.SyEmpMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.SyEmp">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="emp_name" jdbcType="VARCHAR" property="empName" />
+    <result column="emp_no" jdbcType="VARCHAR" property="empNo" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="dept_id" jdbcType="INTEGER" property="deptId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="disabled" jdbcType="BIT" property="disabled" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, emp_name, emp_no, pwd, dept_id, remark, disabled
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sy_emp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sy_emp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.SyEmp">
+    insert into sy_emp (id, emp_name, emp_no, 
+      pwd, dept_id, remark, 
+      disabled)
+    values (#{id,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, #{empNo,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{disabled,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.SyEmp">
+    insert into sy_emp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="empName != null">
+        emp_name,
+      </if>
+      <if test="empNo != null">
+        emp_no,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empName != null">
+        #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empNo != null">
+        #{empNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.SyEmp">
+    update sy_emp
+    <set>
+      <if test="empName != null">
+        emp_name = #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="empNo != null">
+        emp_no = #{empNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.SyEmp">
+    update sy_emp
+    set emp_name = #{empName,jdbcType=VARCHAR},
+      emp_no = #{empNo,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      disabled = #{disabled,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getById" resultType="cn.hr.modulessy.entity.SyEmp">
             select
             id,
             emp_name,
@@ -16,34 +129,7 @@
             where id = #{id}
     </select>
 
-    <select id="login" resultType="cn.hr.modulessy.entity.SyEmp">
-        <!--select
-          id,
-          emp_name,
-          emp_no,
-          pwd,
-          dept_id,
-          remark,
-          disabled
-          from
-          sy_emp
-          where 1 = 1
-          <if test="id!=null">
-              and id=#{id}
-          </if>
-          <if test="empName!=null">
-              and empName=#{empName}
-          </if>
-          <if test="empNo!=null">
-              and empNo=#{empNos}
-          </if>
-          <if test="pwd!=null">
-              and pwd=#{pwd}
-          </if>
-          <if test="deptId!=null">
-              and deptId=#{deptId}
-          </if>-->
+  <select id="login" resultType="cn.hr.modulessy.entity.SyEmp">
         select * from sy_emp where emp_no=#{empNo} and pwd=#{pwd}
     </select>
 </mapper>
-

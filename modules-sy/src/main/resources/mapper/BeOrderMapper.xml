@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hr.modulessy.mapper.BeOrderMapper">
+  <resultMap id="BaseResultMap" type="cn.hr.modulessy.entity.BeOrder">
+    <id column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="stpe_id" jdbcType="INTEGER" property="stpeId" />
+    <result column="create_emp" jdbcType="INTEGER" property="createEmp" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="complete_emp" jdbcType="INTEGER" property="completeEmp" />
+    <result column="complete_date" jdbcType="TIMESTAMP" property="completeDate" />
+    <result column="last_edit_emp" jdbcType="INTEGER" property="lastEditEmp" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="link_man" jdbcType="VARCHAR" property="linkMan" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="use_target" jdbcType="VARCHAR" property="useTarget" />
+    <result column="house_height" jdbcType="INTEGER" property="houseHeight" />
+    <result column="max_amount" jdbcType="INTEGER" property="maxAmount" />
+    <result column="meter_type_id" jdbcType="INTEGER" property="meterTypeId" />
+    <result column="meter_count" jdbcType="INTEGER" property="meterCount" />
+    <result column="user_remark" jdbcType="VARCHAR" property="userRemark" />
+    <result column="pay_type" jdbcType="VARCHAR" property="payType" />
+    <result column="bank_company" jdbcType="VARCHAR" property="bankCompany" />
+    <result column="bank_num" jdbcType="VARCHAR" property="bankNum" />
+    <result column="old_user_no" jdbcType="VARCHAR" property="oldUserNo" />
+    <result column="old_user_name" jdbcType="VARCHAR" property="oldUserName" />
+    <result column="old_user_phone" jdbcType="VARCHAR" property="oldUserPhone" />
+    <result column="old_user_addr" jdbcType="VARCHAR" property="oldUserAddr" />
+    <result column="old_meter" jdbcType="VARCHAR" property="oldMeter" />
+    <result column="audit_emp_id" jdbcType="INTEGER" property="auditEmpId" />
+    <result column="audit_message" jdbcType="VARCHAR" property="auditMessage" />
+    <result column="project_money" jdbcType="DECIMAL" property="projectMoney" />
+    <result column="real_money" jdbcType="DECIMAL" property="realMoney" />
+    <result column="pay_date" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="project_date1" jdbcType="TIMESTAMP" property="projectDate1" />
+    <result column="project_date2" jdbcType="TIMESTAMP" property="projectDate2" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="abort_cause" jdbcType="VARCHAR" property="abortCause" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_no, order_type, stpe_id, create_emp, create_date, complete_emp, complete_date, 
+    last_edit_emp, user_name, user_type, address, link_man, phone, use_target, house_height, 
+    max_amount, meter_type_id, meter_count, user_remark, pay_type, bank_company, bank_num, 
+    old_user_no, old_user_name, old_user_phone, old_user_addr, old_meter, audit_emp_id, 
+    audit_message, project_money, real_money, pay_date, project_date1, project_date2, 
+    area_id, abort_cause
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from be_order
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from be_order
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.hr.modulessy.entity.BeOrder">
+    insert into be_order (order_no, order_type, stpe_id, 
+      create_emp, create_date, complete_emp, 
+      complete_date, last_edit_emp, user_name, 
+      user_type, address, link_man, 
+      phone, use_target, house_height, 
+      max_amount, meter_type_id, meter_count, 
+      user_remark, pay_type, bank_company, 
+      bank_num, old_user_no, old_user_name, 
+      old_user_phone, old_user_addr, old_meter, 
+      audit_emp_id, audit_message, project_money, 
+      real_money, pay_date, project_date1, 
+      project_date2, area_id, abort_cause
+      )
+    values (#{orderNo,jdbcType=VARCHAR}, #{orderType,jdbcType=INTEGER}, #{stpeId,jdbcType=INTEGER}, 
+      #{createEmp,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{completeEmp,jdbcType=INTEGER}, 
+      #{completeDate,jdbcType=TIMESTAMP}, #{lastEditEmp,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkMan,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{useTarget,jdbcType=VARCHAR}, #{houseHeight,jdbcType=INTEGER}, 
+      #{maxAmount,jdbcType=INTEGER}, #{meterTypeId,jdbcType=INTEGER}, #{meterCount,jdbcType=INTEGER}, 
+      #{userRemark,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, #{bankCompany,jdbcType=VARCHAR}, 
+      #{bankNum,jdbcType=VARCHAR}, #{oldUserNo,jdbcType=VARCHAR}, #{oldUserName,jdbcType=VARCHAR}, 
+      #{oldUserPhone,jdbcType=VARCHAR}, #{oldUserAddr,jdbcType=VARCHAR}, #{oldMeter,jdbcType=VARCHAR}, 
+      #{auditEmpId,jdbcType=INTEGER}, #{auditMessage,jdbcType=VARCHAR}, #{projectMoney,jdbcType=DECIMAL}, 
+      #{realMoney,jdbcType=DECIMAL}, #{payDate,jdbcType=TIMESTAMP}, #{projectDate1,jdbcType=TIMESTAMP}, 
+      #{projectDate2,jdbcType=TIMESTAMP}, #{areaId,jdbcType=INTEGER}, #{abortCause,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hr.modulessy.entity.BeOrder">
+    insert into be_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="stpeId != null">
+        stpe_id,
+      </if>
+      <if test="createEmp != null">
+        create_emp,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="completeEmp != null">
+        complete_emp,
+      </if>
+      <if test="completeDate != null">
+        complete_date,
+      </if>
+      <if test="lastEditEmp != null">
+        last_edit_emp,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="linkMan != null">
+        link_man,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="useTarget != null">
+        use_target,
+      </if>
+      <if test="houseHeight != null">
+        house_height,
+      </if>
+      <if test="maxAmount != null">
+        max_amount,
+      </if>
+      <if test="meterTypeId != null">
+        meter_type_id,
+      </if>
+      <if test="meterCount != null">
+        meter_count,
+      </if>
+      <if test="userRemark != null">
+        user_remark,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="bankCompany != null">
+        bank_company,
+      </if>
+      <if test="bankNum != null">
+        bank_num,
+      </if>
+      <if test="oldUserNo != null">
+        old_user_no,
+      </if>
+      <if test="oldUserName != null">
+        old_user_name,
+      </if>
+      <if test="oldUserPhone != null">
+        old_user_phone,
+      </if>
+      <if test="oldUserAddr != null">
+        old_user_addr,
+      </if>
+      <if test="oldMeter != null">
+        old_meter,
+      </if>
+      <if test="auditEmpId != null">
+        audit_emp_id,
+      </if>
+      <if test="auditMessage != null">
+        audit_message,
+      </if>
+      <if test="projectMoney != null">
+        project_money,
+      </if>
+      <if test="realMoney != null">
+        real_money,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+      <if test="projectDate1 != null">
+        project_date1,
+      </if>
+      <if test="projectDate2 != null">
+        project_date2,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="abortCause != null">
+        abort_cause,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="stpeId != null">
+        #{stpeId,jdbcType=INTEGER},
+      </if>
+      <if test="createEmp != null">
+        #{createEmp,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeEmp != null">
+        #{completeEmp,jdbcType=INTEGER},
+      </if>
+      <if test="completeDate != null">
+        #{completeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditEmp != null">
+        #{lastEditEmp,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null">
+        #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="useTarget != null">
+        #{useTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="houseHeight != null">
+        #{houseHeight,jdbcType=INTEGER},
+      </if>
+      <if test="maxAmount != null">
+        #{maxAmount,jdbcType=INTEGER},
+      </if>
+      <if test="meterTypeId != null">
+        #{meterTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="meterCount != null">
+        #{meterCount,jdbcType=INTEGER},
+      </if>
+      <if test="userRemark != null">
+        #{userRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCompany != null">
+        #{bankCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNum != null">
+        #{bankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserNo != null">
+        #{oldUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserName != null">
+        #{oldUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserPhone != null">
+        #{oldUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserAddr != null">
+        #{oldUserAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="oldMeter != null">
+        #{oldMeter,jdbcType=VARCHAR},
+      </if>
+      <if test="auditEmpId != null">
+        #{auditEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="auditMessage != null">
+        #{auditMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMoney != null">
+        #{projectMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="realMoney != null">
+        #{realMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectDate1 != null">
+        #{projectDate1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectDate2 != null">
+        #{projectDate2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="abortCause != null">
+        #{abortCause,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hr.modulessy.entity.BeOrder">
+    update be_order
+    <set>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="stpeId != null">
+        stpe_id = #{stpeId,jdbcType=INTEGER},
+      </if>
+      <if test="createEmp != null">
+        create_emp = #{createEmp,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeEmp != null">
+        complete_emp = #{completeEmp,jdbcType=INTEGER},
+      </if>
+      <if test="completeDate != null">
+        complete_date = #{completeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastEditEmp != null">
+        last_edit_emp = #{lastEditEmp,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="linkMan != null">
+        link_man = #{linkMan,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="useTarget != null">
+        use_target = #{useTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="houseHeight != null">
+        house_height = #{houseHeight,jdbcType=INTEGER},
+      </if>
+      <if test="maxAmount != null">
+        max_amount = #{maxAmount,jdbcType=INTEGER},
+      </if>
+      <if test="meterTypeId != null">
+        meter_type_id = #{meterTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="meterCount != null">
+        meter_count = #{meterCount,jdbcType=INTEGER},
+      </if>
+      <if test="userRemark != null">
+        user_remark = #{userRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCompany != null">
+        bank_company = #{bankCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNum != null">
+        bank_num = #{bankNum,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserNo != null">
+        old_user_no = #{oldUserNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserName != null">
+        old_user_name = #{oldUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserPhone != null">
+        old_user_phone = #{oldUserPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUserAddr != null">
+        old_user_addr = #{oldUserAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="oldMeter != null">
+        old_meter = #{oldMeter,jdbcType=VARCHAR},
+      </if>
+      <if test="auditEmpId != null">
+        audit_emp_id = #{auditEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="auditMessage != null">
+        audit_message = #{auditMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMoney != null">
+        project_money = #{projectMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="realMoney != null">
+        real_money = #{realMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectDate1 != null">
+        project_date1 = #{projectDate1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectDate2 != null">
+        project_date2 = #{projectDate2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="abortCause != null">
+        abort_cause = #{abortCause,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hr.modulessy.entity.BeOrder">
+    update be_order
+    set order_type = #{orderType,jdbcType=INTEGER},
+      stpe_id = #{stpeId,jdbcType=INTEGER},
+      create_emp = #{createEmp,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      complete_emp = #{completeEmp,jdbcType=INTEGER},
+      complete_date = #{completeDate,jdbcType=TIMESTAMP},
+      last_edit_emp = #{lastEditEmp,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      link_man = #{linkMan,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      use_target = #{useTarget,jdbcType=VARCHAR},
+      house_height = #{houseHeight,jdbcType=INTEGER},
+      max_amount = #{maxAmount,jdbcType=INTEGER},
+      meter_type_id = #{meterTypeId,jdbcType=INTEGER},
+      meter_count = #{meterCount,jdbcType=INTEGER},
+      user_remark = #{userRemark,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      bank_company = #{bankCompany,jdbcType=VARCHAR},
+      bank_num = #{bankNum,jdbcType=VARCHAR},
+      old_user_no = #{oldUserNo,jdbcType=VARCHAR},
+      old_user_name = #{oldUserName,jdbcType=VARCHAR},
+      old_user_phone = #{oldUserPhone,jdbcType=VARCHAR},
+      old_user_addr = #{oldUserAddr,jdbcType=VARCHAR},
+      old_meter = #{oldMeter,jdbcType=VARCHAR},
+      audit_emp_id = #{auditEmpId,jdbcType=INTEGER},
+      audit_message = #{auditMessage,jdbcType=VARCHAR},
+      project_money = #{projectMoney,jdbcType=DECIMAL},
+      real_money = #{realMoney,jdbcType=DECIMAL},
+      pay_date = #{payDate,jdbcType=TIMESTAMP},
+      project_date1 = #{projectDate1,jdbcType=TIMESTAMP},
+      project_date2 = #{projectDate2,jdbcType=TIMESTAMP},
+      area_id = #{areaId,jdbcType=INTEGER},
+      abort_cause = #{abortCause,jdbcType=VARCHAR}
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+</mapper>
