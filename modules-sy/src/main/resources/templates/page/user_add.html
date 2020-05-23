@@ -17,6 +17,13 @@
 	<div id="masthead" th:replace="@{commons/temp1}::commonMasthead('用户申请')">
 	</div>
 
+
+
+
+
+
+
+
 	<div id="content" class="xgrid" >
 		<form action="/User/userAdd" method="post">
 		<div class="x12">
@@ -31,11 +38,15 @@
 						<th width="60"></th>
 					</tr>
 				</thead>
+
+
+
+
 				<tbody>
 					<tr>
 						<td>用户编码</td>
 						<td>
-							<input readonly="readonly" value="自动生成" disabled="disabled" name="" />
+							<input readonly="readonly" disabled="disabled" value="自动生成不用管"/>
 						</td>
 						<td>用户类型</td>
 						<td>
@@ -56,12 +67,14 @@
 								<option value="7">特别商户区</option>
 							</select>
 						</td>
+
+
 					</tr>
 					<tr>
 						<td>用户名称</td>
 						<td><input type="text" name="userName"/></td>
 						<td>开户时间</td>
-						<td><input readonly="readonly" disabled="disabled" name="createDate" id="createDate"/></td>
+						<td><input readonly="readonly" disabled="disabled"  id="createDate"/></td>
 						<script>
 							let date = new Date();
 							function time() {
@@ -103,7 +116,7 @@
 						<td>合同编号</td>
 						<td><input type="text" name="contractNum" /></td>
 						<td>签订日期</td>
-						<td><input type="date" name="contractDate" /></td>
+						<td><input type="date"  /></td>
 					</tr>
 
 					<tr>
@@ -142,14 +155,25 @@
 					</tr>
 					<tr>
 						<td>装表日期</td>
-						<td><input name="setupDate" /></td>
+						<td><input/></td>
 						<td>水表厂家</td>
 						<td colspan="3">
-							<input size="68" name="factory"/>
+							<input size="68"/>
 						</td>
 					</tr>
 				</tbody>
 				</table>
+
+
+
+
+
+
+
+
+
+
+
 
 				<div style=" margin:20px 0px 0px 66px;" >
 					<button class="btn">创建新户</button>

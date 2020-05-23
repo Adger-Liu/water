@@ -25,7 +25,7 @@
                 s=s+'<td></td>';
                 s=s+'</tr>';
                 $('table.data tbody').append(s);
-            }
+        }
         }else{//需减少行数
             $('table.data tbody tr:gt('+(n-1)+')').remove();
         }
@@ -38,6 +38,7 @@
 	</div> <!-- #masthead -->
 	<div id="content" class="xgrid">
 		<form action="/BeOrder/submitRequest1" method="post">
+      <input type="hidden" name="orderType" value="1">
 			<div class="x12">
 				<h2>
 					用户申请 - 办理新开户业务

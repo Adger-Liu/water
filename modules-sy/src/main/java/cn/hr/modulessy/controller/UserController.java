@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created with IntelliJ IDEA.
  *  这是用户管理的Controller
@@ -31,12 +35,20 @@ public class UserController {
    * 快捷新户的地址
    * */
   @RequestMapping("/userAdd")
-  public String userAdd(UsUser usUser,UsMeter usMeter){
+  public String userAdd(UsUser usUser,UsMeter usMeter) throws ParseException {
     System.out.println("进入增加用户的方法==========");
+    usUser.setUserNo("11-00001");
+    System.out.println("用户编码：" + usUser.getUserNo());
     System.out.println("公户还是私户：" + usUser.getUserType());
     System.out.println("所属区域：" + usUser.getAreaId());
     System.out.println("用户姓名：" + usUser.getUserName());
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String format = simpleDateFormat.format(new Date());
+    Date date = simpleDateFormat.parse(format);
+    usUser.setCreateDate(date);
     System.out.println("开户时间：" + usUser.getCreateDate());
+
     System.out.println("收款方式：" + usUser.getPayType());
     System.out.println("联系电话：" + usUser.getPhone());
     System.out.println("开户银行：" + usUser.getBankName());

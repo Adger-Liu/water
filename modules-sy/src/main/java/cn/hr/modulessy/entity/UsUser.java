@@ -1,15 +1,27 @@
 package cn.hr.modulessy.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class UsUser {
+    /***
+     * 用户编码
+     */
     private String userNo;
 
+    /***
+     * 用户姓名
+     */
     private String userName;
 
     private String abc;
 
+    /***
+     * 创建时间
+     */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
 
     private String address;

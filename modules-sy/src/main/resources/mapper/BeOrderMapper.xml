@@ -53,7 +53,32 @@
     from be_order
     where order_no = #{orderNo,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--//条件查询：查询已有单号，获取当前月最大的一行
+      List<BeOrder> query(BeOrder beOrder);  -->
+    <select id="query" resultMap="BaseResultMap" parameterType="cn.hr.modulessy.entity.BeOrder" >
+        select
+        <include refid="Base_Column_List" />
+        from be_order t
+        where 1=1
+        <if test="orderNo!=null">
+            and t.order_no like #{orderNo}
+        </if>
+        ORDER BY t.order_no desc
+    </select>
+    <!-- 分页查询 -->
+    <select id="pageList" parameterType="cn.hr.modulessy.vo.BeOrderPageVo" resultType="cn.hr.modulessy.vo.BeOrderVo">
+        select t.order_no,t.order_type,b.stepname,d.dept_name,t.create_date,t.user_name
+        from be_order t
+        left join be_flow b on b.id = t.stpe_id
+        left join sy_dept d on b.deptid = d.id
+        where t.stpe_id = 2 and b.deptid = 2
+        <!-- 本条流程审批节点的部门 需要和当前用户的部门对应，如果不对应没有业务权限 -->
+        <if test="start != null and size != null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from be_order
     where order_no = #{orderNo,jdbcType=VARCHAR}
   </delete>

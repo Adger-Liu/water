@@ -1,24 +1,30 @@
 package cn.hr.modulessy.model;
 
+
 import cn.hr.modulessy.entity.BeOrder;
+import cn.hr.modulessy.entity.BeOrderUser;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: Adger
- * @Date: 2020/05/21/9:03
- * 通过继承，把主表的字段全部复制过来
+/***
+ * 通过继承主表，把主表的字段全部复制过来
+ * 子表（多行）
  */
 public class BeOrderModel extends BeOrder {
-  private List<BeOrder> users;
+    public BeOrderModel() {
+    }
 
-  public List<BeOrder> getUsers() {
-    return users;
-  }
+    public BeOrderModel(List<BeOrderUser> users) {
+        this.users = users;
+    }
 
-  public void setUsers(List<BeOrder> users) {
-    this.users = users;
-  }
+    private List<BeOrderUser> users;
+
+    public List<BeOrderUser> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<BeOrderUser> users) {
+        this.users = users;
+    }
 }

@@ -9,53 +9,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: Adger
- * @Date: 2020/05/20/10:47
- */
 @Controller
 @RequestMapping("/BeOrder")
 public class BeOrderController {
-  @Autowired
-  private BeOrderService orderService;
+    @Autowired
+    private BeOrderService beOrderService;
 
-  /**
-   * @return 用户界面
-   */
-  @RequestMapping("/htmlRequest")
-  public String html(){
-    return "/page/be_request";
-  }
+    @RequestMapping("/htmlRequest")
+    public String htmlRequest(){
 
-  /**
-   * @return 用户界面
-   */
-  @RequestMapping("/htmlRequest1")
-  public String htmlRequest1(){
-    return "page/be__request1";
-  }
-
-  /**
-   *
-   */
-  @RequestMapping("/submitRequest1")
-  public String submitRequest(BeOrderModel beOrderModel, HttpSession httpSession){
-    // 建单人是当前登录用户，只能在控制层获取
-    SyEmp currentUser = (SyEmp) httpSession.getAttribute("currentUser");
-    beOrderModel.setCreateEmp(currentUser.getId());
-    //后台通过BeOrderModel 获取数据
-    System.out.println("控制层查看数据：主表的字段楼层:" + beOrderModel.getHouseHeight());
-    for (int i = 0;i < beOrderModel.getUsers().size();i++){
-      System.out.println("控制层查看数据：子表第"+ i + "行" + beOrderModel.getUsers().get(i).getUserName());
+        return "/page/be__request";
     }
-    // 通过服务层把表单所有的数据保存到数据库 使用 mybatis 技术
-    int i = orderService.submitRequest1(beOrderModel);
-    if(i > 0){
-      return "page/success";
-    }else{
-      return "page/error";
+    @RequestMapping("/htmlRequest1")
+    public String htmlRequest1(){
+
+        return "/page/be__request1";
     }
-  }
+
+    @RequestMapping("/submitRequest1")
+    public String submitRequest1(BeOrderModel model, HttpSession session){
+        //后台通过BeOrderModel获取数据
+        System.out.println("控制层查看数据：主表的字段楼层："+model.getHouseHeight());
+        for (int i=0;i<model.getUsers().size();i++){
+            System.out.println("控制层查看数据：子表第"+i+"行的姓名："+model.getUsers().get(i).getUserName());
+        }
+        //建单人是当前登录用户，只能在控制层来获取
+//        SyEmp cu=(SyEmp)session.getAttribute("currentUser");
+//        model.setCreateEmp(cu.getId());
+        //通过服务层把表单的所有数据保存到数据库
+        //使用mybatis技术
+        int rows=beOrderService.submitRequest1(model);
+        if(rows>0){
+            return "/page/success";
+        }else{
+            return "/page/error";
+        }
+    }
+
+
+
+
+
+
+
 }
