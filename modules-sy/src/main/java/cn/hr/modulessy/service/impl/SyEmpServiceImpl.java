@@ -35,4 +35,46 @@ public class SyEmpServiceImpl implements SyEmpService {
   public List<SyEmp> login(SyEmp syEmp) {
     return sysEmpMapper.login(syEmp);
   }
+
+
+  /**
+   * 修改密码的方法
+   * @return int
+   */
+  @Override
+  public SyEmp selectSystem(Integer id) {
+    SyEmp syEmp = sysEmpMapper.selectByPrimaryKey(id);
+    return syEmp;
+  }
+
+  @Override
+  public List<SyEmp> selectCurrentPwd(int id,String pwd) {
+    return sysEmpMapper.selectUserPwd(id,pwd);
+  }
+
+  /**
+   * 修改密码
+   * @param id
+   * @param pwd
+   */
+  @Override
+  public void updatePwd(int id, String pwd) {
+    sysEmpMapper.updatePwd(id,pwd);
+  }
+
+
+
+
+
+
+
+  /***
+   * 一个测试的方法
+   * @return
+   */
+  @Override
+  public List<SyEmp> selectAll() {
+    List<SyEmp> test = sysEmpMapper.test();
+    return test;
+  }
 }

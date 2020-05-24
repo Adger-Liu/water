@@ -2,6 +2,7 @@ package cn.hr.modulessy.mapper;
 
 import cn.hr.modulessy.entity.BeOrder;
 import cn.hr.modulessy.model.BeOrderModel;
+import cn.hr.modulessy.vo.BeOrderPageVo;
 import cn.hr.modulessy.vo.BeOrderVo;
 
 import java.util.List;
@@ -23,9 +24,9 @@ public interface BeOrderMapper {
 
 
   //分页查询当前页的表格数据，除了查询条件外，新增分页的条件（每页数和当前页）
-  public List<BeOrderVo> pageList(BeOrderVo pagevo);
+  public List<BeOrderVo> pageList(BeOrderPageVo pagevo);
   /**
    * 分页查询的总记录数
    */
-  public int pageTotal(BeOrderVo pagevo);
+  public int pageTotal(BeOrderPageVo pagevo);
 }

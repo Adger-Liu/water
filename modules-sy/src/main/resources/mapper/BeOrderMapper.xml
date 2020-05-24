@@ -66,14 +66,21 @@
         ORDER BY t.order_no desc
     </select>
     <!-- 分页查询 -->
-    <select id="pageList" parameterType="cn.hr.modulessy.vo.BeOrderPageVo" resultType="cn.hr.modulessy.vo.BeOrderVo">
-        select t.order_no,t.order_type,b.stepname,d.dept_name,t.create_date,t.user_name
+    <select id="pageTotal" parameterType="cn.hr.modulessy.vo.BeOrderPageVo" resultType="Integer">
+        select count(*)
         from be_order t
         left join be_flow b on b.id = t.stpe_id
         left join sy_dept d on b.deptid = d.id
         where t.stpe_id = 2 and b.deptid = 2
         <!-- 本条流程审批节点的部门 需要和当前用户的部门对应，如果不对应没有业务权限 -->
-        <if test="start != null and size != null">
+    </select>
+
+    <select id="pageList" parameterType="cn.hr.modulessy.vo.BeOrderPageVo" resultType="cn.hr.modulessy.vo.BeOrderVo">
+        SELECT t.order_no,t.order_type,b.stepname,d.dept_name,t.create_date,t.user_name FROM be_order t
+        left JOIN be_flow b on b.id=t.stpe_id
+        left JOIN sy_dept d on b.deptid=d.id
+        where t.stpe_id=2 and b.deptid=2
+        <if test="start!=null and size!=null">
             limit #{start},#{size}
         </if>
     </select>

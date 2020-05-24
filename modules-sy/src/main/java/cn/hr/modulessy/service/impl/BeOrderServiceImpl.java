@@ -9,6 +9,8 @@ import cn.hr.modulessy.mapper.BeOrderUserMapper;
 import cn.hr.modulessy.model.BeOrderModel;
 import cn.hr.modulessy.service.BeOrderService;
 import cn.hr.modulessy.util.PrimaryGenerater;
+import cn.hr.modulessy.vo.BeOrderPageVo;
+import cn.hr.modulessy.vo.BeOrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,5 +79,15 @@ public class BeOrderServiceImpl implements BeOrderService {
     beHisTory.setEmpId(beOrderModel.getCreateEmp());
     int i = beHisToryMapper.insertSelective(beHisTory);
     return row;
+  }
+
+  @Override
+  public List<BeOrderVo> pageList(BeOrderPageVo pagevo) {
+    return  beOrderMapper.pageList(pagevo);
+  }
+
+  @Override
+  public int pageTotal(BeOrderPageVo pagevo) {
+    return  beOrderMapper.pageTotal(pagevo);
   }
 }

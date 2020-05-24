@@ -1,6 +1,7 @@
 package cn.hr.modulessy.mapper;
 
 import cn.hr.modulessy.entity.SyEmp;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -32,4 +33,24 @@ public interface SyEmpMapper {
      * 登录(业务方法),支持登录业务方法
      * */
     public List<SyEmp> login(SyEmp syEmp);
+
+    /***
+     * 测试
+     */
+    public List<SyEmp> test();
+
+  /**
+   * 查询密码 这个人的密码是不是数据库中的密码
+   * @param id
+   * @param pwd
+   * @return
+   */
+  public List<SyEmp> selectUserPwd(@Param("id") int id, @Param("pwd") String pwd);
+
+  /**
+   * 修改密码
+   * @param id
+   * @param pwd
+   */
+  public void updatePwd(@Param("id") int id, @Param("pwd") String pwd);
 }

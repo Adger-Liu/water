@@ -114,8 +114,11 @@
       disabled = #{disabled,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    <update id="updatePwd">
+        update sy_emp set pwd=#{pwd} where id=#{id}
+    </update>
 
-  <select id="getById" resultType="cn.hr.modulessy.entity.SyEmp">
+    <select id="getById" resultType="cn.hr.modulessy.entity.SyEmp">
             select
             id,
             emp_name,
@@ -131,5 +134,13 @@
 
   <select id="login" resultType="cn.hr.modulessy.entity.SyEmp">
         select * from sy_emp where emp_no=#{empNo} and pwd=#{pwd}
+    </select>
+
+    <select id="test" resultType="cn.hr.modulessy.entity.SyEmp">
+        select * from sy_emp
+    </select>
+        <!-- parameterType 入参类型 -->
+    <select id="selectUserPwd" resultType="cn.hr.modulessy.entity.SyEmp">
+        select * from sy_emp where id=#{id} and pwd=#{pwd}
     </select>
 </mapper>
